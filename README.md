@@ -1,6 +1,6 @@
 # CGRA 2021/2022
 
-## Group T0xG0y
+## Group T07G03
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | Henrique Pinho   | 201805000 | up201805000@fc.up.pt |

@@ -3,6 +3,7 @@ import { MyDiamond } from "./MyDiamond.js";
 import { MyParallelogram } from "./MyParallelogram.js";
 import { MyTriangle } from "./MyTriangle.js";
 import { MyTriangleSmall } from "./MyTriangleSmall.js";
+import { MyTriangleBig } from "./MyTriangleBig.js";
 
 /**
  * MyScene
@@ -31,22 +32,20 @@ export class MyScene extends CGFscene {
     this.diamond = new MyDiamond(this);
 
     //ex1
-    this.triangle= new MyTriangle(this);
-    this.parallelogram= new MyParallelogram(this);
-
-    //2
-    this.sTriangle= new MyTriangleSmall(this);
-    //this.bTriangle= new MyTriangleBig(this);
+    this.triangle = new MyTriangle(this);
+    this.parallelogram = new MyParallelogram(this);
+    this.triangleSmall = new MyTriangleSmall(this);
+    this.triangleBig = new MyTriangleBig(this);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.scaleFactor = 1;
     //ex1
-    this.displayDiamond=true;
-    this.displayTriangle=false;
-    this.displayParallelogram=false;
-    this.displayTriangleSmall=false;
-    this.displayTriangleBig=false;
+    this.displayDiamond = true;
+    this.displayTriangle = false;
+    this.displayParallelogram = false;
+    this.displayTriangleSmall = false;
+    this.displayTriangleBig = false;
   }
   initLights() {
     this.lights[0].setPosition(15, 2, 5, 1);
@@ -65,20 +64,20 @@ export class MyScene extends CGFscene {
   }
   
   //vermelho
-  setDefaultAppearance() {
+  /*setDefaultAppearance() {
     this.setAmbient(1, 0, 0, 1);
     this.setDiffuse(1, 0, 0, 1);
     this.setSpecular(1, 0, 0, 1);
     this.setShininess(10.0);
-  }
+  }*/
 
   //azul
-  /*setDefaultAppearance() {
+  setDefaultAppearance() {
     this.setAmbient(0, 0, 1, 1);
     this.setDiffuse(0, 0, 1, 1);
     this.setSpecular(0, 0, 1, 1);
     this.setShininess(10.0);
-  }*/
+  }
 
   display() {
     // ---- BEGIN Background, camera and axis setup
@@ -120,9 +119,9 @@ export class MyScene extends CGFscene {
     // ---- BEGIN Primitive drawing section ex1
     if (this.displayDiamond) this.diamond.display();
     if (this.displayTriangle) this.triangle.display();
-    if(this.displayParallelogram) this.parallelogram.display();
-    if(this.displayTriangleSmall) this.sTriangle.display();
-  //  if(this.displayTriangleBig) this.bTriangle.display();
+    if (this.displayParallelogram) this.parallelogram.display();
+    if (this.displayTriangleSmall) this.triangleSmall.display();
+    if (this.displayTriangleBig) this.triangleBig.display();
 
     // ---- END Primitive drawing section
   }

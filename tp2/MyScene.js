@@ -41,11 +41,12 @@ export class MyScene extends CGFscene {
     this.displayAxis = true;
     this.scaleFactor = 1;
     //ex1
+    /*
     this.displayDiamond = true;
     this.displayTriangle = false;
     this.displayParallelogram = false;
     this.displayTriangleSmall = false;
-    this.displayTriangleBig = false;
+    this.displayTriangleBig = false;*/
   }
   initLights() {
     this.lights[0].setPosition(15, 2, 5, 1);
@@ -115,14 +116,27 @@ export class MyScene extends CGFscene {
     ];
 
     this.multMatrix(sca);
+    /*
+    this.pushMatrix();
+    this.scale(2,2,2);
+    this.diamond.display();
+    this.popMatrix();
+    this.diamond.display();
+    */
+
+    this.pushMatrix();
+    this.rotate(Math.PI, 1,0,0)
+    this.parallelogram.display();
+    this.popMatrix();
 
     // ---- BEGIN Primitive drawing section ex1
-    if (this.displayDiamond) this.diamond.display();
-    if (this.displayTriangle) this.triangle.display();
-    if (this.displayParallelogram) this.parallelogram.display();
-    if (this.displayTriangleSmall) this.triangleSmall.display();
-    if (this.displayTriangleBig) this.triangleBig.display();
-
+    /*
+    this.diamond.display();
+    this.triangle.display();
+    this.parallelogram.display();
+    this.triangleSmall.display();
+    this.triangleBig.display();
+    */
     // ---- END Primitive drawing section
   }
 }

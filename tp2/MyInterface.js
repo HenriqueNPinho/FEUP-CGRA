@@ -20,9 +20,7 @@ export class MyInterface extends CGFinterface {
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
 
-        //Slider element in GUI
-        this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
-
+       
      
         /* tp1 //1 
         this.gui.add(this.scene, 'displayDiamond').name('Diamond');
@@ -33,7 +31,11 @@ export class MyInterface extends CGFinterface {
         this.gui.add(this.scene, 'displayTriangleBig').name('Big Triangle');
         */
         this.gui.add(this.scene, 'displayEx2_2').name('Ex2_2');
-        this.gui.add(this.scene, 'displayTangram').name('Tangram');
+        this.gui.add(this.scene, 'displayTangram').name('Ex2_3');
+        this.gui.add(this.scene, 'displayUnitCube').name('Ex3_3');
+        
+        //Slider element in GUI
+        this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
 
         return true;
     }

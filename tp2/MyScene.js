@@ -129,6 +129,7 @@ export class MyScene extends CGFscene {
     this.parallelogram.display();
     this.popMatrix();
 
+    
     // ---- BEGIN Primitive drawing section ex1
     /*
     this.diamond.display();

@@ -41,12 +41,12 @@ export class MyScene extends CGFscene {
     this.displayAxis = true;
     this.scaleFactor = 1;
     //ex1
-    /*
-    this.displayDiamond = true;
+    
+    this.displayDiamond = false;
     this.displayTriangle = false;
     this.displayParallelogram = false;
     this.displayTriangleSmall = false;
-    this.displayTriangleBig = false;*/
+    this.displayTriangleBig = false;
   }
   initLights() {
     this.lights[0].setPosition(15, 2, 5, 1);
@@ -128,16 +128,46 @@ export class MyScene extends CGFscene {
     this.rotate(Math.PI, 1,0,0)
     this.parallelogram.display();
     this.popMatrix();
+    this.pushMatrix();
+    this.translate(-1,-1,0);
+    this.triangleBig.display();
+    this.popMatrix();
+    this.pushMatrix();
+    this.translate(-3,0,0);
+    this.rotate(Math.PI,1,0,0);
+    this.triangleSmall.display();
+    this.popMatrix();
+    this.pushMatrix()
+    this.translate(0,2,0);
+    this.rotate(Math.PI,1,0,0);
+    this.translate(-2,0,0);
+    this.triangleBig.display();
+    this.popMatrix(); 
+    this.pushMatrix();
+    this.translate(-2,3,0);
+    this.diamond.display();
+    this.popMatrix();
+    this.pushMatrix();
+    this.translate(3,0,0);
+    this.rotate(Math.PI/2, 0, 0, 1);
+    this.triangleSmall.display();
+    this.popMatrix();
+    this.pushMatrix();
+    this.translate(4, 0, 0);
+    this.rotate(3*Math.PI/2, 0,0,1);
+    this.triangle.display();
+    this.popMatrix();
+
 
     
     // ---- BEGIN Primitive drawing section ex1
-    /*
-    this.diamond.display();
-    this.triangle.display();
-    this.parallelogram.display();
-    this.triangleSmall.display();
-    this.triangleBig.display();
-    */
+    
+    if(this.displayDiamond) this.diamond.display();
+    if(this.displayTriangle) this.triangle.display();
+    if(this.displayParallelogram) this.parallelogram.display();
+    if(this.displayTriangleSmall) this.triangleSmall.display();
+    if(this.displayTriangleBig) this.triangleBig.display();
+    
     // ---- END Primitive drawing section
   }
 }

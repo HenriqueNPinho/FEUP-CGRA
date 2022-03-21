@@ -6,6 +6,7 @@ import { MyTriangleSmall } from "./MyTriangleSmall.js";
 import { MyTriangleBig } from "./MyTriangleBig.js";
 import { MyTangram } from "./MyTangram.js";
 import { MyUnitCube } from "./MyUnitCube.js";
+import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 /**
  * MyScene
@@ -42,6 +43,7 @@ export class MyScene extends CGFscene {
     //tp2
     this.tangram = new MyTangram(this);
     this.unitCube= new MyUnitCube(this);
+    this.unitCubeQuad = new MyUnitCubeQuad(this);
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.scaleFactor = 1;
@@ -55,7 +57,9 @@ export class MyScene extends CGFscene {
     
     this.displayEx2_2=false;
     this.displayTangram=false;
-    this.displayUnitCube=true;
+    this.displayUnitCube=false;
+    this.displayUnitCubeQuad = true;
+  
   }
   initLights() {
     this.lights[0].setPosition(15, 2, 5, 1);
@@ -168,12 +172,48 @@ export class MyScene extends CGFscene {
       this.popMatrix();
     }
     if(this.displayUnitCube){
-      
-      //3.4
+
       this.translate(0,0,-0.5);
       this.pushMatrix();
       this.scale(9,9,9);
       this.unitCube.display();
+      this.popMatrix();
+    }
+    if(this.displayUnitCubeQuad){
+
+      //escrever aqui o 4
+
+      this.pushMatrix();
+      this.translate(0,0,0.5);
+      this.unitCubeQuad.face1.display();
+      this.popMatrix();
+
+      this.pushMatrix();
+      this.translate(0,0,-0.5);
+      this.unitCubeQuad.face2.display();
+      this.popMatrix;
+
+      this.pushMatrix();
+      this.translate(0,0.5,0.5);
+      this.rotate(Math.PI/-2,1,0,0);
+      this.unitCubeQuad.face3.display();
+      this.popMatrix;
+
+      this.pushMatrix();
+      this.translate(0,0,-1);
+      this.unitCubeQuad.face4.display();
+      this.popMatrix();
+
+      this.pushMatrix();
+      this.translate(0.5,0,-0.5);
+      this.rotate(Math.PI/2,0,1,0);
+      this.unitCubeQuad.face5.display();
+      this.popMatrix();
+
+      this.pushMatrix();
+      this.translate(-0.5,0,-0.5);
+      this.rotate(Math.PI/2,0,1,0);
+      this.unitCubeQuad.face6.display();
       this.popMatrix();
     }
     
@@ -189,6 +229,7 @@ export class MyScene extends CGFscene {
    //tp2
    if(this.displayTangram) this.tangram.display(); 
    if(this.displayUnitCube) this.unitCube.display();
+   if(this.displayUnitCubeQuad) this.unitCubeQuad.display();
     
     // ---- END Primitive drawing section
   }

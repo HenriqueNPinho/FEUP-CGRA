@@ -167,6 +167,15 @@ export class MyScene extends CGFscene {
       this.triangle.display();
       this.popMatrix();
     }
+    if(this.displayUnitCube){
+      
+      //3.4
+      this.translate(0,0,-0.5);
+      this.pushMatrix();
+      this.scale(9,9,9);
+      this.unitCube.display();
+      this.popMatrix();
+    }
     
     // ---- BEGIN Primitive drawing section ex1
     
@@ -179,7 +188,6 @@ export class MyScene extends CGFscene {
 
    //tp2
    if(this.displayTangram) this.tangram.display(); 
-
    if(this.displayUnitCube) this.unitCube.display();
     
     // ---- END Primitive drawing section

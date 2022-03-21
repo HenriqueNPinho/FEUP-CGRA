@@ -58,7 +58,7 @@ export class MyScene extends CGFscene {
     this.displayEx2_2=false;
     this.displayTangram=false;
     this.displayUnitCube=false;
-    this.displayUnitCubeQuad = true;
+    this.displayUnitCubeQuad = false;
   
   }
   initLights() {
@@ -172,10 +172,12 @@ export class MyScene extends CGFscene {
       this.popMatrix();
     }
     if(this.displayUnitCube){
+      this.translate(0.5, 0, 0.5);
+      this.rotate(-Math.PI /2, 1, 0, 0);
 
-      this.translate(0,0,-0.5);
       this.pushMatrix();
-      this.scale(9,9,9);
+      this.translate(4, -4, -0.5);
+      this.scale(9, 9, 1);  
       this.unitCube.display();
       this.popMatrix();
     }
@@ -227,9 +229,10 @@ export class MyScene extends CGFscene {
     if(this.displayTriangleBig) this.triangleBig.display();
 
    //tp2
-   if(this.displayTangram) this.tangram.display(); 
-   if(this.displayUnitCube) this.unitCube.display();
-   if(this.displayUnitCubeQuad) this.unitCubeQuad.display();
+   if(this.displayTangram) { 
+    this.translate(3.5, -4, 0.1);
+     this.tangram.display(); 
+  }
     
     // ---- END Primitive drawing section
   }

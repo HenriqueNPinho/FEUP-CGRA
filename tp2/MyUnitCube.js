@@ -23,28 +23,40 @@ export class MyUnitCube extends CGFobject {
     ]
     this.indices=[
         //frente
-         4, 5, 6,
+        4, 5, 6,
         5, 7, 6,
+        6, 5, 4,
+        6, 7, 5,
         
         //trás
         0, 1, 2,
         1, 3, 2,
+        2, 1, 0,
+        2, 3, 1,
 
         //cima
         5, 1, 7,
         3, 7, 1,
+        7, 1, 5,
+        1, 7, 3,
         
         //baixo
         4, 0, 6,
         2, 6, 0,
+        6, 0, 4,
+        0, 6, 2,
 
         //esquerda
         6, 2, 7,
         3, 7, 2,
+        7, 2, 6,
+        2, 7, 3,
 
         //direita
         4, 0, 5,
-        1, 5, 0
+        1, 5, 0,
+        5, 0, 4,
+        0, 5, 1
     ];
 
 		//The defined indices (and corresponding vertices)

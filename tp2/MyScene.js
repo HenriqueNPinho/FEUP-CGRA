@@ -172,6 +172,7 @@ export class MyScene extends CGFscene {
       this.popMatrix();
     }
     if(this.displayUnitCube){
+      
       this.translate(0.5, 0, 0.5);
       this.rotate(-Math.PI /2, 1, 0, 0);
 
@@ -180,11 +181,26 @@ export class MyScene extends CGFscene {
       this.scale(9, 9, 1);  
       this.unitCube.display();
       this.popMatrix();
+      this.pushMatrix();
+      this.translate(3.5, -4, 0.1);
+      this.tangram.display();
+      this.popMatrix();
     }
     if(this.displayUnitCubeQuad){
+      
+      //4.3
+      //this.translate(0.5, 0, 0.5);
+      //this.rotate(-Math.PI /2, 1, 0, 0);
+      //this.rotate(-Math.PI /2, 1, 0, 0);
+      //isto nao e suposto ser para o tangram
+      
 
-      //escrever aqui o 4
+      this.pushMatrix();
+      this.translate(0.5,-0.5,0.5);
+      this.translate(4, 0, 4)
+      this.scale(9,1,9);
 
+      //4.2
       this.pushMatrix();
       this.translate(0,0,0.5);
       this.unitCubeQuad.face1.display();
@@ -217,6 +233,7 @@ export class MyScene extends CGFscene {
       this.rotate(Math.PI/2,0,1,0);
       this.unitCubeQuad.face6.display();
       this.popMatrix();
+      this.popMatrix();
     }
     
     // ---- BEGIN Primitive drawing section ex1
@@ -229,10 +246,7 @@ export class MyScene extends CGFscene {
     if(this.displayTriangleBig) this.triangleBig.display();
 
    //tp2
-   if(this.displayTangram) { 
-    this.translate(3.5, -4, 0.1);
-     this.tangram.display(); 
-  }
+   if(this.displayTangram) {  this.tangram.display(); }
     
     // ---- END Primitive drawing section
   }

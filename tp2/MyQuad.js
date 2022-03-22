@@ -22,6 +22,8 @@ export class MyQuad extends CGFobject {
             //frente
             0, 1, 2,
             3, 2, 1,
+            2, 1, 0,
+            1, 2, 3
         ];
 
 		//The defined indices (and corresponding vertices)

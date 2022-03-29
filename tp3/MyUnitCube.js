@@ -11,52 +11,84 @@ export class MyUnitCube extends CGFobject {
 	}
 	
 	initBuffers() {
+    
 		this.vertices=[ 
-                0.5, -0.5, -0.5,         //0- inferior direito trás
-                0.5,  0.5, -0.5,        //1- superior direito ""
-               -0.5, -0.5, -0.5,       //2- inferior esquerdo ""
-               -0.5,  0.5, -0.5,      //3- superior ""
-    0.5, -0.5,  0.5,     //4- inferior direito frente
-    0.5,  0.5,  0.5,    //5- superior direito ""
-   -0.5, -0.5,  0.5,   //6- inferior esquerdo ""
-   -0.5,  0.5,  0.5   //7- superior esquerdo  ""
+      0.5, -0.5, -0.5,         //0  0- inferior direito trás
+      0.5,  0.5, -0.5,         //1  1- superior direito trás 
+      -0.5, -0.5, -0.5,        //2  2- inferior esquerdo trás
+      -0.5,  0.5, -0.5,        //3  3- superior esquerdo trás
+      0.5, -0.5,  0.5,         //4  4- inferior direito frente
+      0.5,  0.5,  0.5,         //5  5- superior direito frente
+      -0.5, -0.5,  0.5,        //6  6- inferior esquerdo frente
+      -0.5,  0.5,  0.5,        //7  7- superior esquerdo  frente
+
+      0.5, -0.5, -0.5,         //8  0- inferior direito trás
+      0.5,  0.5, -0.5,         //9  1- superior direito trás 
+      -0.5, -0.5, -0.5,        //10 2- inferior esquerdo trás
+      -0.5,  0.5, -0.5,        //11 3- superior esquerdo trás
+      0.5, -0.5,  0.5,         //12 4- inferior direito frente
+      0.5,  0.5,  0.5,         //13 5- superior direito frente
+      -0.5, -0.5,  0.5,        //14 6- inferior esquerdo frente
+      -0.5,  0.5,  0.5,        //15 7- superior esquerdo  frente
+
+      0.5, -0.5, -0.5,         //16 0- inferior direito trás
+      0.5,  0.5, -0.5,         //17 1- superior direito trás 
+      -0.5, -0.5, -0.5,        //18 2- inferior esquerdo trás
+      -0.5,  0.5, -0.5,        //19 3- superior esquerdo trás
+      0.5, -0.5,  0.5,         //20 4- inferior direito frente
+      0.5,  0.5,  0.5,         //21 5- superior direito frente
+      -0.5, -0.5,  0.5,        //22 6- inferior esquerdo frente
+      -0.5,  0.5,  0.5         //23 7- superior esquerdo  frente
     ]
+
     this.indices=[
-        //frente
-        4, 5, 6,
-        5, 7, 6,
-        6, 5, 4,
-        6, 7, 5,
-        
-        //trás
-        0, 1, 2,
-        1, 3, 2,
-        2, 1, 0,
-        2, 3, 1,
+      1, 5, 4,
+      1, 4, 0,
 
-        //cima
-        5, 1, 7,
-        3, 7, 1,
-        7, 1, 5,
-        1, 7, 3,
-        
-        //baixo
-        4, 0, 6,
-        2, 6, 0,
-        6, 0, 4,
-        0, 6, 2,
+      7, 3, 6,
+      3, 2, 6,
 
-        //esquerda
-        6, 2, 7,
-        3, 7, 2,
-        7, 2, 6,
-        2, 7, 3,
+      13, 9, 11,
+      11, 15, 13,
 
-        //direita
-        4, 0, 5,
-        1, 5, 0,
-        5, 0, 4,
-        0, 5, 1
+      8, 12, 14,
+      14, 10, 8,
+
+      20, 21, 23,
+      23, 22, 20,
+
+      19, 17, 16,
+      16, 18, 19
+    ];
+
+    this.normals = [
+
+      1, 0, 0,
+      1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+      1, 0, 0,
+      1, 0, 0,
+      -1, 0, 0,
+      -1, 0, 0,
+
+      0, -1, 0,
+      0, 1, 0,
+      0, -1, 0,
+      0, 1, 0,
+      0, -1, 0,
+      0, 1, 0,
+      0, -1, 0,
+      0, 1, 0,
+
+      0, 0, -1,
+      0, 0, -1,
+      0, 0, -1,
+      0, 0, -1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1,
+      0, 0, 1
     ];
 
 		//The defined indices (and corresponding vertices)
@@ -66,4 +98,3 @@ export class MyUnitCube extends CGFobject {
 		this.initGLBuffers();
 	}
 }
-

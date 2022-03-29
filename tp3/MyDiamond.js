@@ -15,7 +15,7 @@ export class MyDiamond extends CGFobject {
 			-1, 0, 0,	//0
 			0, -1, 0,	//1
 			0, 1, 0,	//2
-			1, 0, 0,	//3
+			1, 0, 0,		//3
 
 			-1, 0, 0,	//4
 			0, -1, 0,	//5
@@ -35,12 +35,7 @@ export class MyDiamond extends CGFobject {
 			0, 0, 1,
 			0, 0, 1,
 			0, 0, 1,
-			0, 0, 1,
-
-			0, 0, -1,
-			0, 0, -1,
-			0, 0, -1,
-			0, 0, -1
+			0, 0, 1
 		];
 
 		//The defined indices (and corresponding vertices)

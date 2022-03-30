@@ -45,14 +45,14 @@ export class MyTangram extends CGFobject {
     
         this.scene.pushMatrix();
         this.scene.translate(-3,-1,0);
-        this.scene.rotate(Math.PI,1,0,0);
+        this.scene.rotate(Math.PI,0,0,1);
         this.triangleSmall.display();
         this.scene.popMatrix();
     
         this.scene.pushMatrix()
         this.scene.translate(0,1,0);
-        this.scene.rotate(Math.PI,1,0,0);
         this.scene.translate(-2,0,0);
+        this.scene.rotate(Math.PI,0,0,1);
         this.triangleBig.display();
         this.scene.popMatrix(); 
     

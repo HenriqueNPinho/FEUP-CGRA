@@ -142,7 +142,7 @@ export class MyScene extends CGFscene {
 
         //ex 4 : material wood
         this.material4 = new CGFappearance(this);
-        var color = this.hexToRgbA('#5c4033');
+        var color = this.hexToRgbA('#964b00');
         this.material4.setAmbient(color[0], color[1], color[2], 1.0);
         this.material4.setDiffuse(color[0], color[1], color[2], 1.0);
         this.material4.setSpecular(color[0]*0.1, color[1]*0.1, color[2]*0.1, 1.0);
@@ -161,11 +161,12 @@ export class MyScene extends CGFscene {
 
         this.updateCustomMaterial();
 
-        this.materials = [this.material1, this.material2, this.material3, this.material4, this.customMaterial];
+        this.materials = [this.material1, this.material2, this.material3, this.customMaterial, this.material4];
 
         // Labels and ID's for object selection on MyInterface
         this.materialIDs = {'Red Ambient': 0, 'Red Diffuse': 1, 'Red Specular': 2, 'Custom': 3, 'Wood': 4};
     }
+
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene

@@ -73,6 +73,12 @@ export class MyTangram extends CGFobject {
         this.pink.setShininess(10.0);
 	}
 
+    initMaterials(){
+        //ex1
+        this.texture = new CGFtexture(this, 'images/tangram.png');
+        this.myMaterial = new CGFappearance(this.scene);
+    }
+
     display(){
 
         var diamondMatrix = [
@@ -81,7 +87,8 @@ export class MyTangram extends CGFobject {
             0, 0, 1, 0,
             -2, 2, 0, 1
            ];
-       
+
+        this.myMaterial.setTexture(this.texture)
         this.scene.pushMatrix();
         this.scene.translate(0,-1,0);
         this.scene.rotate(Math.PI, 1,0,0);
@@ -115,6 +122,7 @@ export class MyTangram extends CGFobject {
     
         this.scene.pushMatrix();
         this.scene.multMatrix(diamondMatrix);
+        this.myMaterial.apply();
         //this.green.apply();
         this.scene.customMaterial.apply();
         this.diamond.display();

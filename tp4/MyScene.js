@@ -1,6 +1,7 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture } from "../lib/CGF.js";
 import { MyQuad } from "./MyQuad.js";
 import { MyTangram } from "./MyTangram.js";
+import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 /**
  * MyScene
@@ -31,6 +32,17 @@ export class MyScene extends CGFscene {
 
         this.tangram= new MyTangram(this);
 
+        /* ex2*/
+        this.top = new CGFtexture(this, 'images/mineTop.png');
+        this.front = new CGFtexture(this, 'images/mineSide.png');
+        this.back = new CGFtexture(this, 'images/mineSide.png');
+        this.left = new CGFtexture(this, 'images/mineSide.png');
+        this.right = new CGFtexture(this, 'images/mineSide.png');
+        this.bottom = new CGFtexture(this, 'images/mineBottom.png');
+
+        this.myUnitQuad = new MyUnitCubeQuad(this, [this.top, this.front,this.right, this.back, this.left, this.bottom]);
+
+
         //------ Applied Material
         this.quadMaterial = new CGFappearance(this);
         this.quadMaterial.setAmbient(0.1, 0.1, 0.1, 1);
@@ -48,11 +60,12 @@ export class MyScene extends CGFscene {
         //-------
 
         this.selectedObject = -1;
-        this.objectsIds = { 'Quad': 0, 'Tangram': 1};
-        this.objects = [this.quad, this.tangram ];
+        this.objectsIds = { 'Quad': 0, 'Tangram': 1, 'Unit Q':2 };
+        this.objects = [this.quad, this.tangram, this.myUnitQuad];
 
         //-------Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayText= true;
         this.scaleFactor = 5;
         this.selectedTexture = -1;        
         this.wrapS = 0;
@@ -150,8 +163,9 @@ export class MyScene extends CGFscene {
         // Default texture filtering in WebCGF is LINEAR. 
         // Uncomment next line for NEAREST when magnifying, or 
         // add a checkbox in the GUI to alternate in real time
+      
+        //this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         
-        // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
         if(this.selectedObject !=-1){
             if( this.selectedObject == 0) this.quadMaterial.apply();
             this.objects[this.selectedObject].display();

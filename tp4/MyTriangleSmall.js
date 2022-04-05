@@ -1,4 +1,5 @@
 import {CGFobject} from '../lib/CGF.js';
+import { MyTangram } from "./MyTangram.js";
 /**
  * MyTriangleSmall
  * @constructor
@@ -8,6 +9,8 @@ export class MyTriangleSmall extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
+
+		
 	}
 	
 	initBuffers() {
@@ -28,10 +31,21 @@ export class MyTriangleSmall extends CGFobject {
 			0, 0, 1
 		];
 
+		this.texCoords = [
+
+		];
+		
+
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles
 		this.primitiveType = this.scene.gl.TRIANGLES;
 
 		this.initGLBuffers();
+
+		
+	}
+	updateTexCoords(coords) {
+		this.texCoords = [...coords];
+		this.updateTexCoordsGLBuffers();
 	}
 }

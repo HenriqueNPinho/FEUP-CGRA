@@ -1,4 +1,4 @@
-import {CGFappearance, CGFobject} from '../lib/CGF.js';
+import {CGFappearance, CGFobject, CGFtexture} from '../lib/CGF.js';
 import { MyDiamond } from "./MyDiamond.js";
 import { MyParallelogram } from "./MyParallelogram.js";
 import { MyTriangle } from "./MyTriangle.js";
@@ -13,6 +13,7 @@ export class MyTangram extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
+        this.initMaterials();
 	}
 	
 	initBuffers() {
@@ -75,7 +76,7 @@ export class MyTangram extends CGFobject {
 
     initMaterials(){
         //ex1
-        this.texture = new CGFtexture(this, 'images/tangram.png');
+        this.texture = new CGFtexture(this.scene, 'images/tangram.png');
         this.myMaterial = new CGFappearance(this.scene);
     }
 
@@ -87,19 +88,29 @@ export class MyTangram extends CGFobject {
             0, 0, 1, 0,
             -2, 2, 0, 1
            ];
+        
+           
+        
+        this.myMaterial.setTexture(this.texture);
 
-        this.myMaterial.setTexture(this.texture)
         this.scene.pushMatrix();
         this.scene.translate(0,-1,0);
-        this.scene.rotate(Math.PI, 1,0,0);
-        this.yellow.apply();
+        this.scene.scale(1,-1,1);
+        this.myMaterial.apply();
+        //this.yellow.apply();
         this.parallelogram.display();
         this.scene.popMatrix();
     
         //triangulo cima
         this.scene.pushMatrix();
         this.scene.translate(-1,-2,0);
-        this.blue.apply();
+        this.triangleBig.updateTexCoords([
+            1,0,
+            0,0,
+            0.5,0.5
+		])
+        this.myMaterial.apply();
+        //this.blue.apply();
         this.triangleBig.display();
         this.scene.popMatrix();
     
@@ -107,7 +118,13 @@ export class MyTangram extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(-3,-1,0);
         this.scene.rotate(Math.PI,0,0,1);
-        this.purple.apply();
+        this.triangleSmall.updateTexCoords([
+			0,0,
+            0,0.5,
+            0.25, 0.25
+		])
+        this.myMaterial.apply();
+        //this.purple.apply();
         this.triangleSmall.display();
         this.scene.popMatrix();
     
@@ -116,7 +133,13 @@ export class MyTangram extends CGFobject {
         this.scene.translate(0,1,0);
         this.scene.translate(-2,0,0);
         this.scene.rotate(Math.PI,0,0,1);
-        this.orange.apply();
+        this.triangleBig.updateTexCoords([
+			1,1,
+            1,0,
+            0.5,0.5
+		])
+       // this.orange.apply();
+        this.myMaterial.apply();
         this.triangleBig.display();
         this.scene.popMatrix(); 
     
@@ -124,7 +147,7 @@ export class MyTangram extends CGFobject {
         this.scene.multMatrix(diamondMatrix);
         this.myMaterial.apply();
         //this.green.apply();
-        this.scene.customMaterial.apply();
+        //this.scene.customMaterial.apply();
         this.diamond.display();
         this.scene.popMatrix();
     
@@ -132,14 +155,19 @@ export class MyTangram extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(3,-1,0);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
-        this.red.apply();
+        this.triangleSmall.updateTexCoords([0.25, 0.75,
+			0.75, 0.75,
+			0.5, 0.5])
+        ///this.red.apply();
+        this.myMaterial.apply();
         this.triangleSmall.display();
         this.scene.popMatrix();
         
         this.scene.pushMatrix();
         this.scene.translate(4, -1, 0);
         this.scene.rotate(3*Math.PI/2, 0,0,1);
-        this.pink.apply();
+        //this.pink.apply();
+        this.myMaterial.apply();
         this.triangle.display();
         this.scene.popMatrix();
     }

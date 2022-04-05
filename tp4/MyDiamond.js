@@ -31,6 +31,14 @@ export class MyDiamond extends CGFobject {
 			0, 0, 1
 		]
 
+		this.texCoords=[
+			0.00, 0.50,
+			0.25, 0.75,
+			0.25, 0.25,
+			0.50, 0.50
+			
+		];
+
 
 
 		//The defined indices (and corresponding vertices)

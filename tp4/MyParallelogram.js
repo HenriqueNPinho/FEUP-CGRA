@@ -20,10 +20,10 @@ export class MyParallelogram extends CGFobject {
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
+			0, 1, 2,
+			2, 1, 3,
 			2, 1, 0,
 			3, 1, 2,
-			0, 1, 2,
-			2, 1, 3
 		];
 
 		this.normals = [
@@ -32,6 +32,15 @@ export class MyParallelogram extends CGFobject {
 			0, 0, 1,
 			0, 0, 1
 		]
+
+		this.texCoords=[
+			1.00, 1.00,
+			0.75, 0.75,
+			0.50, 1.00,
+			0.25, 0.75,	
+			
+		];
+
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles

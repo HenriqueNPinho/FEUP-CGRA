@@ -152,8 +152,8 @@ export class MyScene extends CGFscene {
         // add a checkbox in the GUI to alternate in real time
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-        if(this.selectedObject!=-1){
-            if( this.selectedObject ==0) this.quadMaterial.apply();
+        if(this.selectedObject !=-1){
+            if( this.selectedObject == 0) this.quadMaterial.apply();
             this.objects[this.selectedObject].display();
         }
             

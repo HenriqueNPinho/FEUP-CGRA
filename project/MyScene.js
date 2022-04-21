@@ -1,6 +1,7 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MyPlane } from "./MyPlane.js";
 import  {CGFcamera2} from "./CFGcamera2.js";
+import { MyTrack } from "./MyTrack.js";
 
 /**
 * MyScene
@@ -33,6 +34,17 @@ export class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
+
+        this.track=[
+            {x: 3, z: 3, type: simple},
+          
+            {x: 4, z: 2, type: station},
+          
+            {x: 6, z: 2, type: simple},
+          
+            {x: 7, z: 3, type: station} 
+        ]
+        this.myTrack =  new MyTrack(this, track)
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);

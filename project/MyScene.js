@@ -36,15 +36,15 @@ export class MyScene extends CGFscene {
         this.displayAxis = true;
 
         this.track=[
-            {x: 3, z: 3, type: simple},
+            {x: 3, z: 3, type: 'simple'},
           
-            {x: 4, z: 2, type: station},
+            {x: 4, z: 2, type: 'station'},
           
-            {x: 6, z: 2, type: simple},
+            {x: 6, z: 2, type: 'simple'},
           
-            {x: 7, z: 3, type: station} 
+            {x: 7, z: 3, type: 'station'} 
         ]
-        this.myTrack =  new MyTrack(this, track)
+        this.myTrack =  new MyTrack(this, this.track)
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -87,11 +87,12 @@ export class MyScene extends CGFscene {
         this.setDefaultAppearance();
 
         // ---- BEGIN Primitive drawing section
-        this.pushMatrix();
+        /*this.pushMatrix();
         this.scale(50,1,50);
         this.rotate(-Math.PI*0.5, 1,0,0);
         this.plane.display();
-        this.popMatrix();
+        this.popMatrix();*/
         // ---- END Primitive drawing section
+        this.myTrack.display()
     }
 }

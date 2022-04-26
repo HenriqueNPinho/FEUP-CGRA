@@ -14,11 +14,12 @@ export class MyQuad extends CGFobject {
 	}
 	
 	initBuffers() {
+
 		this.vertices = [
-			2, 0, -2,
-			12, 0, 8,
-			8, 0, 12,
-			-2, 0, 2,
+			0, 0, -2,
+			1, 0, -2,
+			1, 0, 2,
+			0, 0, 2,
 		];
 
 		//Counter-clockwise reference of vertices
@@ -46,7 +47,11 @@ export class MyQuad extends CGFobject {
         */
 
 		this.texCoords = [
-			
+			0,1,
+			1,1,
+			1,0,
+			0,0
+
 		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

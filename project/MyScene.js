@@ -38,11 +38,11 @@ export class MyScene extends CGFscene {
         this.track=[
             {x: 3, z: 3, type: 'simple'},
           
-            {x: 4, z: 2, type: 'station'},
+            {x: 13, z: 10, type: 'station'},
           
-            {x: 6, z: 2, type: 'simple'},
+            {x: 13, z: 18, type: 'simple'},
           
-            {x: 7, z: 3, type: 'station'} 
+            {x: 3, z: 24, type: 'station'} 
         ]
         this.myTrack =  new MyTrack(this, this.track)
     }
@@ -57,7 +57,7 @@ export class MyScene extends CGFscene {
     }
 
     setDefaultAppearance() {
-        this.setAmbient(0.2, 0.4, 0.8, 1.0);
+        this.setAmbient(0.9, 0.9, 0.9, 1.0);
         this.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.setEmission(0,0,0,1);

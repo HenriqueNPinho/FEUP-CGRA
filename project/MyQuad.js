@@ -17,8 +17,8 @@ export class MyQuad extends CGFobject {
 
 		this.vertices = [
 			0, 0, -2,
-			1, 0, -2,
-			1, 0, 2,
+			4, 0, -2,
+			4, 0, 2,
 			0, 0, 2,
 		];
 
@@ -47,10 +47,7 @@ export class MyQuad extends CGFobject {
         */
 
 		this.texCoords = [
-			0,1,
-			1,1,
-			1,0,
-			0,0
+		
 
 		]
 		this.primitiveType = this.scene.gl.TRIANGLES;

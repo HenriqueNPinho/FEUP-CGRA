@@ -28,46 +28,51 @@ import { MyQuad } from './MyQuad.js';
       }
 
       initMaterials(){
-        this.texture = new CGFtexture(this.scene, 'images/tracks.png');
+       
         this.myMaterial = new CGFappearance(this.scene);
         this.myMaterial.setAmbient(1, 1, 1, 1.0);
         this.myMaterial.setDiffuse(1, 1, 1, 1.0);
         this.myMaterial.setSpecular(1, 1, 1, 1.0);
         this.myMaterial.setShininess(10.0);
+        this.myMaterial.loadTexture('images/tracks.png');
         this.myMaterial.setTextureWrap('REPEAT', 'REPEAT');
     }
 
 
       display(){
-        this.myMaterial.setTexture(this.texture);
-
         this.scene.pushMatrix()
-        if (this.angleDeg>0 && this.angleDeg<90){ //(.:)
-          this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
-          this.scene.scale(this.pointDist, 1,1)
-          
-        }
-        else if (this.angleDeg>90 && this.angleDeg<180){ //:.
-          console.log("aqui")
-        } 
-        else if (this.angleDeg>180 && this.angleDeg<270){ //.:
-          console.log("aqui")
-        }
-        else if (this.angleDeg>270 && this.angleDeg<360){
-          console.log("aqui")
-        }
-        else{ // 0 || 90
+       
+        if(this.angleDeg == 90 || this.angleDeg ==0){
           if(this.z == this.z1){
-            this.scene.translate(this.x, 1, this.z)
-            this.scene.scale(this.pointDist, 1,1)
+            this.scene.translate(this.x, 0, this.z)
+            this.scene.scale(this.pointDist/4, 1,1)
           }
           else{
             this.scene.translate(this.x, 0, this.z)
             this.scene.rotate(-Math.PI/2,0,1,0)
-            this.scene.scale(this.pointDist,1,1)
+            this.scene.scale(this.pointDist/4,1,1)
           }
+
+        }
+        else if (this.angleDeg>0 ){ //(.:)
+          this.scene.translate(this.x, 0, this.z)
+          this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
+          this.scene.scale(this.pointDist/4, 1,1)
+          
           
         }
+        else if (this.angleDeg<0){
+          console.log("aqui")
+        }
+        
+       // this.scene.scale(this.pointDist,1,1)
+        this.quad.updateTexCoords([
+          0,0,
+          this.pointDist/4,0,
+          this.pointDist/4,1,
+          0,1
+
+        ])
         this.myMaterial.apply()
         this.quad.display()
         this.scene.popMatrix()

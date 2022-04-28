@@ -36,13 +36,23 @@ export class MyScene extends CGFscene {
         this.displayAxis = true;
 
         this.track=[
-            {x: 3, z: 3, type: 'simple'},
+            {x: 15, z: -20, type: 'simple'}, //A
+
+            {x: 0, z: -20, type: 'station'}, //B
           
-            {x: 13, z: 10, type: 'station'},
+            {x: -15, z: -20, type: 'curve'}, //C
           
-            {x: 13, z: 18, type: 'simple'},
+            {x: -20, z: -15, type: 'simple'}, //D
+
+            {x: -20, z: 5, type: 'curve'}, //E
+
+            {x:0, z: 40, type: 'simple'}, //F
+            
+            {x:10, z: 40, type: 'station'}, //G
+
+            //{x: 20, z: -15, type: 'simple'}, //
           
-            {x: 3, z: 24, type: 'station'} 
+
         ]
         this.myTrack =  new MyTrack(this, this.track)
     }

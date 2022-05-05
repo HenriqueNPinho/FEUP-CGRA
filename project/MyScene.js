@@ -46,11 +46,11 @@ export class MyScene extends CGFscene {
 
             {x: -20, z: 5, type: 'curve'}, //E
 
-            {x:0, z: 40, type: 'simple'}, //F
+           // {x:0, z: 20, type: 'simple'}, //F
             
-            {x:10, z: 40, type: 'station'}, //G
+            {x:-10, z: 20, type: 'station'}, //G
 
-            //{x: 20, z: -15, type: 'simple'}, //
+            {x: 15, z: 10, type: 'simple'}, //
           
 
         ]

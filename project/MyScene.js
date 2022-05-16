@@ -1,8 +1,9 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MyPlane } from "./MyPlane.js";
-import  {CGFcamera2} from "./CFGcamera2.js";
+import {CGFcamera2} from "./CFGcamera2.js";
 import { MyTrack } from "./MyTrack.js";
 import { MyCircle } from "./MyCircle.js";
+import { MyCylinder } from "./MyCylinder.js";
 
 /**
 * MyScene
@@ -57,6 +58,7 @@ export class MyScene extends CGFscene {
         ]
         this.myTrack =  new MyTrack(this, this.track)
         this.myCircle = new MyCircle(this, 10, 1)
+        this.myCylinder = new MyCylinder(this, 10, 3, 0.5)
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -107,5 +109,6 @@ export class MyScene extends CGFscene {
         // ---- END Primitive drawing section
         this.myTrack.display()
         this.myCircle.display();
+        this.myCylinder.display();
     }
 }

@@ -1,9 +1,10 @@
-import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
+import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture } from "../lib/CGF.js";
 import { MyPlane } from "./MyPlane.js";
 import {CGFcamera2} from "./CFGcamera2.js";
 import { MyTrack } from "./MyTrack.js";
 import { MyCircle } from "./MyCircle.js";
 import { MyCylinder } from "./MyCylinder.js";
+import { MySphere } from "./MySphere.js";
 
 /**
 * MyScene
@@ -56,9 +57,49 @@ export class MyScene extends CGFscene {
           
 
         ]
+        /*Text */
+        this.circleText = new CGFtexture(this, 'images/circle.jpg');
+        this.earthText = new CGFtexture(this, 'images/earth.jpg');
+        this.cylinderText = new CGFtexture(this, 'images/cilindroText.jpg');
+
+
         this.myTrack =  new MyTrack(this, this.track)
+       
+
+        //Circle
         this.myCircle = new MyCircle(this, 10, 1)
+
+        this.circleAppearance = new CGFappearance(this);
+        this.circleAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+        this.circleAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.circleAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+        this.circleAppearance.setShininess(120);
+        this.circleAppearance.setTexture(this.circleText);
+        //this.circleAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
+        //Earth
+        this.myEarth = new MySphere(this, 16, 8);
+        this.displayEarth=false;
+
+        this.earthAppearance = new CGFappearance(this);
+        this.earthAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+        this.earthAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.earthAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+        this.earthAppearance.setShininess(120);
+        this.earthAppearance.setTexture(this.earthText);
+        this.earthAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
+        //cylinder
         this.myCylinder = new MyCylinder(this, 10, 3, 0.5)
+
+        this.cylinderAppearance = new CGFappearance(this);
+        this.cylinderAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+        this.cylinderAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.cylinderAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+        this.cylinderAppearance.setShininess(120);
+        this.cylinderAppearance.setTexture(this.cylinderText);
+        this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -108,7 +149,16 @@ export class MyScene extends CGFscene {
         this.popMatrix();*/
         // ---- END Primitive drawing section
         this.myTrack.display()
+        if(this.displayEarth){
+            this.earthAppearance.apply()
+            this.myEarth.display()
+        }
+        else{
+       
+        this.circleAppearance.apply();
         this.myCircle.display();
-        this.myCylinder.display();
+        
+        this.cylinderAppearance.apply();
+        this.myCylinder.display(); }
     }
 }

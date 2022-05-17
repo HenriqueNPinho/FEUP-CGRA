@@ -42,7 +42,7 @@ import { MyQuad } from './MyQuad.js';
       display(){
         this.scene.pushMatrix()
        
-        if(this.angleDeg == 90 || this.angleDeg ==0){
+        /*if(this.angleDeg == 90 || this.angleDeg ==0){
           if(this.z == this.z1){
             this.scene.translate(this.x, 0, this.z)
             this.scene.scale(this.pointDist/4, 1,1)
@@ -54,17 +54,11 @@ import { MyQuad } from './MyQuad.js';
           }
 
         }
-        else if (this.angleDeg>0 ){ //(.:)
+        else { //(.:) */
           this.scene.translate(this.x, 0, this.z)
           this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
           this.scene.scale(this.pointDist/4, 1,1)
-          
-          
-        }
-        else if (this.angleDeg<0){
-          console.log("aqui")
-        }
-        
+      //  }
        // this.scene.scale(this.pointDist,1,1)
         this.quad.updateTexCoords([
           0,0,

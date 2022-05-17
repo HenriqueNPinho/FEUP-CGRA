@@ -12,9 +12,9 @@ export class MyCylinder extends CGFobject {
         this.vertices = [];
         this.indices = [];
         this.normals = [];
+        this.texCoords = [];
 
         var ang = 0;
-        var alphaAng = 2*Math.PI/this.slices;
 
         for (var i = 0; i < this.slices*2; i+=2){
           this.indices.push(i+1, i, i+2);
@@ -28,14 +28,26 @@ export class MyCylinder extends CGFobject {
           this.normals.push(Math.cos(ang), 0, -Math.sin(ang));
           this.normals.push(Math.cos(ang), 0, -Math.sin(ang));
           
-          ang+=alphaAng;
+          ang+= (2*Math.PI/this.slices);
         }
+        
+        for (var i = 0; i < (this.slices)/2; i++){
+          this.texCoords.push(i/(this.slices/2), 1);
+          this.texCoords.push(i/(this.slices/2), 0);
+        }
+        for (var i = this.slices/2; i > 0; i--){
+          this.texCoords.push(i/(this.slices/2), 1);
+          this.texCoords.push(i/(this.slices/2), 0);
+        }
+        this.texCoords.push(0, 1);
+        this.texCoords.push(0, 0);
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }
     
     updateBuffers(complexity){
+        
         this.slices = 3 + Math.round(9 * complexity);
 
         this.initBuffers();

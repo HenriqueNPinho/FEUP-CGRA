@@ -64,12 +64,12 @@ export class MyScene extends CGFscene {
         /*Textures  */
 
             //ambiente
-        this.top = new CGFtexture(this,'images/demo_cubemap/top.png');
-        this.front = new CGFtexture(this, 'images/demo_cubemap/front.png');
-        this.back = new CGFtexture(this, 'images/demo_cubemap/back.png');
-        this.left = new CGFtexture(this, 'images/demo_cubemap/left.png');
-        this.right = new CGFtexture(this,'images/demo_cubemap/right.png');
-        this.bottom = new CGFtexture(this, 'images/demo_cubemap/bottom.png');
+        this.top = new CGFtexture(this,'images/cubeText.jpg');
+        this.front = new CGFtexture(this, 'images/cubeText.jpg');
+        this.back = new CGFtexture(this, 'images/cubeText.jpg');
+        this.left = new CGFtexture(this, 'images/cubeText.jpg');
+        this.right = new CGFtexture(this,'images/cubeText.jpg');
+        this.bottom = new CGFtexture(this, 'images/cubeText.jpg');
 
         this.circleText = new CGFtexture(this, 'images/circle.jpg');
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
@@ -114,8 +114,8 @@ export class MyScene extends CGFscene {
         this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //cube map
-        this.demo_cubemap=[this.top, this.front, this.right, this.back, this.left, this.bottom];
-        this.myCubeMap = new MyUnitCubeQuad(this, this.demo_cubemap);
+        this.cubeTexture=[this.top, this.front, this.right, this.back, this.left, this.bottom];
+        this.myCube = new MyUnitCubeQuad(this, this.cubeTexture);
 
     }
     initLights() {
@@ -166,7 +166,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();*/
         // ---- END Primitive drawing section
         this.myTrack.display()
-        this.myCubeMap.display()
+        this.myCube.display()
         if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()

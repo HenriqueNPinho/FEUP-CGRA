@@ -1,6 +1,6 @@
 
 import {CGFobject, CGFtexture,CGFappearance} from '../lib/CGF.js';
-import { MyQuad } from './MyQuad.js';
+import { MyTrackQuad } from './MyTrackQuad.js';
  
   export class MyTrackSegment extends CGFobject {
       constructor(scene, seg) {
@@ -24,7 +24,7 @@ import { MyQuad } from './MyQuad.js';
         this.z=z
         this.z1=z1
         
-        this.quad= new MyQuad(this.scene)
+        this.quad= new MyTrackQuad(this.scene)
       }
 
       initMaterials(){

@@ -5,6 +5,7 @@ import { MyTrack } from "./MyTrack.js";
 import { MyCircle } from "./MyCircle.js";
 import { MyCylinder } from "./MyCylinder.js";
 import { MySphere } from "./MySphere.js";
+import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 /**
 * MyScene
@@ -57,7 +58,19 @@ export class MyScene extends CGFscene {
           
 
         ]
-        /*Text */
+
+       
+        
+        /*Textures  */
+
+            //ambiente
+        this.top = new CGFtexture(this,'images/demo_cubemap/top.png');
+        this.front = new CGFtexture(this, 'images/demo_cubemap/front.png');
+        this.back = new CGFtexture(this, 'images/demo_cubemap/back.png');
+        this.left = new CGFtexture(this, 'images/demo_cubemap/left.png');
+        this.right = new CGFtexture(this,'images/demo_cubemap/right.png');
+        this.bottom = new CGFtexture(this, 'images/demo_cubemap/bottom.png');
+
         this.circleText = new CGFtexture(this, 'images/circle.jpg');
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
         this.cylinderText = new CGFtexture(this, 'images/cilindroText.jpg');
@@ -99,6 +112,10 @@ export class MyScene extends CGFscene {
         this.cylinderAppearance.setShininess(120);
         this.cylinderAppearance.setTexture(this.cylinderText);
         this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
+        //cube map
+        this.demo_cubemap=[this.top, this.front, this.right, this.back, this.left, this.bottom];
+        this.myCubeMap = new MyUnitCubeQuad(this, this.demo_cubemap);
 
     }
     initLights() {
@@ -149,6 +166,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();*/
         // ---- END Primitive drawing section
         this.myTrack.display()
+        this.myCubeMap.display()
         if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
@@ -157,7 +175,7 @@ export class MyScene extends CGFscene {
        
         this.circleAppearance.apply();
         this.myCircle.display();
-        
+
         this.cylinderAppearance.apply();
         this.myCylinder.display(); }
     }

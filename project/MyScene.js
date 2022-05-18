@@ -6,6 +6,7 @@ import { MyCircle } from "./MyCircle.js";
 import { MyCylinder } from "./MyCylinder.js";
 import { MySphere } from "./MySphere.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
+import { MyCubeMap } from "./MyCubeMap.js";
 
 /**
 * MyScene
@@ -60,7 +61,7 @@ export class MyScene extends CGFscene {
         ]
 
        
-        
+        this.displayAll=false;
         /*Textures  */
 
             //ambiente
@@ -115,7 +116,7 @@ export class MyScene extends CGFscene {
 
         //cube map
         this.demo_cubemap=[this.top, this.front, this.right, this.back, this.left, this.bottom];
-        this.myCubeMap = new MyUnitCubeQuad(this, this.demo_cubemap);
+        this.myCubeMap = new MyCubeMap(this, this.demo_cubemap);
 
     }
     initLights() {
@@ -165,8 +166,11 @@ export class MyScene extends CGFscene {
         this.plane.display();
         this.popMatrix();*/
         // ---- END Primitive drawing section
-        this.myTrack.display()
         this.myCubeMap.display()
+
+        if(this.myCubeMap.display()){
+        this.myTrack.display()
+        
         if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
@@ -178,5 +182,6 @@ export class MyScene extends CGFscene {
 
         this.cylinderAppearance.apply();
         this.myCylinder.display(); }
+        }
     }
 }

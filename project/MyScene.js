@@ -175,22 +175,26 @@ export class MyScene extends CGFscene {
         this.plane.display();
         this.popMatrix();*/
         // ---- END Primitive drawing section
-        this.myCubeMap.display()
 
-        if(this.myCubeMap.display()){
-        this.myTrack.display()
+
+        this.pushMatrix();
+        this.myCubeMap.display()
+        this.popMatrix();
+
+       
+        
         
         if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
         }
         else{
-       
+            this.myTrack.display()
         this.circleAppearance.apply();
         this.myCircle.display();
 
         this.cylinderAppearance.apply();
         this.myCylinder.display(); }
         }
-    }
+    
 }

@@ -65,6 +65,7 @@ export class MyScene extends CGFscene {
         /*Textures  */
 
             //ambiente
+    
         this.top = new CGFtexture(this,'images/demo_cubemap/top.png');
         this.front = new CGFtexture(this, 'images/demo_cubemap/front.png');
         this.back = new CGFtexture(this, 'images/demo_cubemap/back.png');
@@ -72,6 +73,8 @@ export class MyScene extends CGFscene {
         this.right = new CGFtexture(this,'images/demo_cubemap/right.png');
         this.bottom = new CGFtexture(this, 'images/demo_cubemap/bottom.png');
 
+        
+        this.cubeText = new CGFtexture(this,'images/cubeText.jpg');
         this.circleText = new CGFtexture(this, 'images/circle.jpg');
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
         this.cylinderText = new CGFtexture(this, 'images/cilindroText.jpg');
@@ -117,6 +120,12 @@ export class MyScene extends CGFscene {
         //cube map
         this.demo_cubemap=[this.top, this.front, this.right, this.back, this.left, this.bottom];
         this.myCubeMap = new MyCubeMap(this, this.demo_cubemap);
+
+        //cubo Bruna
+        this.cubeTexture=[this.cubeText,this.cubeText,this.cubeText,this.cubeText,this.cubeText,this.cubeText];
+        this.myCube = new MyUnitCubeQuad(this, this.cubeTexture);
+
+        
 
     }
     initLights() {

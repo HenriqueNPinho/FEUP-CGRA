@@ -28,7 +28,7 @@ export class MyCubeMap extends CGFobject {
     this.myMaterial.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     //cima
-    this.scene.scale (150,150,150);
+    this.scene.scale (50,50,50);
     this.scene.pushMatrix();
     this.scene.translate(0,0.5,0);
     this.scene.rotate(Math.PI/2,1,0,0);

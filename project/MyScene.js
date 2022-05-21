@@ -62,6 +62,8 @@ export class MyScene extends CGFscene {
         ] 
         this.displayAll=false;
 
+      
+ 
         //Track
         this.myTrack =  new MyTrack(this, this.track);
 
@@ -130,7 +132,7 @@ export class MyScene extends CGFscene {
             this.axis.display();
 
         this.setDefaultAppearance();
-
+        
         // ---- BEGIN Primitive drawing section
         /*this.pushMatrix();
         this.scale(50,1,50);
@@ -144,14 +146,14 @@ export class MyScene extends CGFscene {
         this.myCubeMap.display()
         this.popMatrix();
 
-        if(this.displayEarth){
+       /* if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
         }
         else{
             this.myTrack.display()
             this.myTrainModel.display();
-        }
+        }*/
     }
     
 }

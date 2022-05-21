@@ -15,7 +15,6 @@ export class MyCircle extends CGFobject {
         this.texCoords = [];
 
 		var ang = 0;
-        var alphaAng = 2*Math.PI/this.slices;
 
         for(var i = 0; i < this.slices; i++){
 
@@ -24,7 +23,7 @@ export class MyCircle extends CGFobject {
             this.normals.push(0, 1, 0);
             this.texCoords.push(0.5 + Math.cos(ang)*0.5, 0.5 - Math.sin(ang)*0.5);
             
-            ang+=alphaAng;
+            ang+=(2*Math.PI/this.slices);
         }
 
         this.vertices.push(0,0,0);
@@ -40,9 +39,8 @@ export class MyCircle extends CGFobject {
      * @param {integer} complexity - changes number of slices
      */
     updateBuffers(complexity){
-        this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
+        this.slices = 3 + Math.round(9 * complexity); 
 
-        // reinitialize buffers
         this.initBuffers();
         this.initNormalVizBuffers();
     }

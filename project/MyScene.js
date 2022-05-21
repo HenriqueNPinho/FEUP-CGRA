@@ -146,14 +146,14 @@ export class MyScene extends CGFscene {
         this.myCubeMap.display()
         this.popMatrix();
 
-       /* if(this.displayEarth){
+       if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
         }
         else{
             this.myTrack.display()
             this.myTrainModel.display();
-        }*/
+        }
     }
     
 }

@@ -23,7 +23,7 @@ export class MyTrainModel extends CGFobject {
 
         //circulo roda
         this.circleText = new CGFtexture(this.scene, 'images/circle.jpg');
-        this.circle = new MyCircle(this.scene, 20, 0.7)
+        this.circle = new MyCircle(this.scene, 20, 1.5/2)
         this.circleAppearance = new CGFappearance(this.scene);
         this.circleAppearance.setAmbient(0.3, 0.3, 0.3, 1);
         this.circleAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -33,7 +33,7 @@ export class MyTrainModel extends CGFobject {
 
         //tampa
         this.tampaText = new CGFtexture(this.scene, 'images/cubeText.jpg');
-        this.tampa = new MyCircle(this.scene, 20, 1.3/2)
+        this.tampa = new MyCircle(this.scene, 20, 0.9)
         this.tampaAppearance = new CGFappearance(this.scene);
         this.tampaAppearance.setAmbient(0.3, 0.3, 0.3, 1);
         this.tampaAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -41,9 +41,9 @@ export class MyTrainModel extends CGFobject {
         this.tampaAppearance.setShininess(120);
         this.tampaAppearance.setTexture(this.tampaText);
 
-        //cilindro
+        //cilindro rodas
         this.cylinderText = new CGFtexture(this.scene, 'images/cilindroText.jpg');
-        this.cylinder = new MyCylinder(this.scene, 10, 1, 0.5)
+        this.cylinder = new MyCylinder(this.scene, 10, 2.5, 1.5/2);
         this.cylinderAppearance = new CGFappearance(this.scene);
         this.cylinderAppearance.setAmbient(0.3, 0.3, 0.3, 1);
         this.cylinderAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -51,6 +51,18 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearance.setShininess(120);
         this.cylinderAppearance.setTexture(this.cylinderText);
         this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
+        //cilindro cima
+        this.cylinderTextCima = new CGFtexture(this.scene, 'images/cilindroText.jpg');
+        this.cylinderCima = new MyCylinder(this.scene, 10, 3.5, 0.9);
+        this.cylinderAppearanceCima = new CGFappearance(this.scene);
+        this.cylinderAppearanceCima.setAmbient(0.3, 0.3, 0.3, 1);
+        this.cylinderAppearanceCima.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.cylinderAppearanceCima.setSpecular(0.0, 0.0, 0.0, 1);
+        this.cylinderAppearanceCima.setShininess(120);
+        this.cylinderAppearanceCima.setTexture(this.cylinderTextCima);
+        this.cylinderAppearanceCima.setTextureWrap('LINEAR', 'LINEAR');
+
     }
 
     display(){
@@ -64,18 +76,17 @@ export class MyTrainModel extends CGFobject {
 
         //cilindro cima
         this.scene.pushMatrix();
-        this.scene.translate(0, 2.1, -0.1);
-        this.scene.scale(1.3, 1.3, 3.5);
+        this.scene.translate(0, 2.35, -0.1);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.cylinderAppearance.apply();
-        this.cylinder.display();
+        this.cylinderAppearanceCima.apply();
+        this.cylinderCima.display();
         this.scene.popMatrix();
 
         //chamine
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI, 0, 0, 1);
-        this.scene.scale(0.5, 1, 0.5);
-        this.scene.translate(0, -3.5, 4.5);
+        this.scene.scale(0.3, 1, 0.3);
+        this.scene.translate(0, -3.7, 8);
         this.cylinderAppearance.apply();
         this.cylinder.display();
         this.scene.popMatrix();
@@ -89,7 +100,7 @@ export class MyTrainModel extends CGFobject {
         
         //tampa frente
         this.scene.pushMatrix();
-        this.scene.translate(0, 2.1, 3.4);
+        this.scene.translate(0, 2.35, 3.4);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.tampaAppearance.apply();
         this.tampa.display();
@@ -97,7 +108,7 @@ export class MyTrainModel extends CGFobject {
 
         //roda direita tras
         this.scene.pushMatrix();
-        this.scene.translate(1.26, 1.5/2, -1.95);
+        this.scene.translate(1.26, 0.6, -1.95);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -105,7 +116,7 @@ export class MyTrainModel extends CGFobject {
 
         //roda direita frente
         this.scene.pushMatrix();
-        this.scene.translate(1.26, 1.5/2, 1.95);
+        this.scene.translate(1.26, 0.6, 1.95);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -113,7 +124,7 @@ export class MyTrainModel extends CGFobject {
 
         //roda esquerda tras
         this.scene.pushMatrix();
-        this.scene.translate(-1.26, 1.5/2, -1.95);
+        this.scene.translate(-1.26, 0.6, -1.95);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -121,7 +132,7 @@ export class MyTrainModel extends CGFobject {
 
         //roda esquerda frente
         this.scene.pushMatrix();
-        this.scene.translate(-1.26, 1.5/2, 1.95);
+        this.scene.translate(-1.26, 0.6, 1.95);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -129,8 +140,7 @@ export class MyTrainModel extends CGFobject {
 
         //cilindro roda tras
         this.scene.pushMatrix();
-        this.scene.scale(2.5, 1.5, 1.5)
-        this.scene.translate(-0.5, 0.5, -1.3);
+        this.scene.translate(-1.25, 0.7, -2);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.cylinderAppearance.apply();
         this.cylinder.display();
@@ -138,8 +148,7 @@ export class MyTrainModel extends CGFobject {
 
         //cilindro roda frente
         this.scene.pushMatrix();
-        this.scene.scale(2.5, 1.5, 1.5)
-        this.scene.translate(-0.5, 0.5, 1.3);
+        this.scene.translate(-1.25, 0.7, 2);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.cylinderAppearance.apply();
         this.cylinder.display();

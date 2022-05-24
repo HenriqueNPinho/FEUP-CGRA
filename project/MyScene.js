@@ -44,23 +44,23 @@ export class MyScene extends CGFscene {
         this.displayCubeMap=true;
 
         this.track=[
-            {x: 15, z: -20, type: 'simple'}, //A
-
-            {x: 0, z: -20, type: 'station'}, //B
           
-            {x: -15, z: -20, type: 'curve'}, //C
+            {x: 20, z: -25, type: 'simple'}, //A
+
+            {x: 5, z: -25, type: 'station'}, //B
           
-            {x: -20, z: -15, type: 'simple'}, //D
+            {x: -20, z: -25, type: 'simple'}, //C
 
-            {x: -20, z: 5, type: 'curve'}, //E
+            {x: -25, z: -20, type: 'simple'}, //D
 
-           // {x:0, z: 20, type: 'simple'}, //F
+            {x: -25, z: 10, type: 'simple'}, //E
             
-            {x:-10, z: 20, type: 'station'}, //G
+            {x:-15, z: 30, type: 'simple'}, //F
 
-            {x: 15, z: 10, type: 'simple'}, //
+            {x: 6, z: 24.75, type: 'station'}, //G
+
+           {x: 25, z: 20, type: 'simple'}, // H
           
-
         ] 
         this.displayAll=false;
 

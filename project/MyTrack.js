@@ -15,7 +15,7 @@ import { MyTrackSegment } from './MyTrackSegment.js';
           for(var i=1; i<track.length; i++){
             this.segs.push( { x: track[i-1].x, z:track[i-1].z, x1: track[i].x, z1:track[i].z, type: track[i-1].type} )
           }
-         this.segs.push( { x: track[0].x, z:track[0].z, x1: track[track.length-1].x, z1:track[track.length-1].z})
+        this.segs.push( { x: track[0].x, z:track[0].z, x1: track[track.length-1].x, z1:track[track.length-1].z})
          console.log(track)
           console.log(this.segs)
           this.initBuffers();

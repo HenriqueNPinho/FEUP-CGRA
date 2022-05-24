@@ -40,6 +40,8 @@ export class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayEarth=false;
+        this.displayCubeMap=true;
 
         this.track=[
             {x: 15, z: -20, type: 'simple'}, //A
@@ -73,7 +75,7 @@ export class MyScene extends CGFscene {
         //Earth
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
         this.myEarth = new MySphere(this, 16, 8);
-        this.displayEarth=false;
+       
         this.earthAppearance = new CGFappearance(this);
         this.earthAppearance.setAmbient(0.3, 0.3, 0.3, 1);
         this.earthAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -89,8 +91,29 @@ export class MyScene extends CGFscene {
         this.left = new CGFtexture(this, 'images/demo_cubemap/left.png');
         this.right = new CGFtexture(this,'images/demo_cubemap/right.png');
         this.bottom = new CGFtexture(this, 'images/demo_cubemap/bottom.png');
+
+        this.top1 = new CGFtexture(this,'images/castle/posy.jpg');
+        this.front1 = new CGFtexture(this, 'images/castle/posz.jpg');
+        this.back1 = new CGFtexture(this, 'images/castle/negz.jpg');
+        this.left1 = new CGFtexture(this, 'images/castle/negx.jpg');
+        this.right1 = new CGFtexture(this,'images/castle/posx.jpg');
+        this.bottom1 = new CGFtexture(this, 'images/castle/negy.jpg');
+
+        this.top2 = new CGFtexture(this,'images/field/posy.jpg');
+        this.front2 = new CGFtexture(this, 'images/field/posz.jpg');
+        this.back2 = new CGFtexture(this, 'images/field/negz.jpg');
+        this.left2 = new CGFtexture(this, 'images/field/negx.jpg');
+        this.right2 = new CGFtexture(this,'images/field/posx.jpg');
+        this.bottom2 = new CGFtexture(this,'images/field/negy.jpg');
+
+
         this.demo_cubemap=[this.top, this.front, this.right, this.back, this.left, this.bottom];
-        this.myCubeMap = new MyCubeMap(this, this.demo_cubemap);
+        this.demo_cubemap1=[this.top1, this.front1, this.right1, this.back1, this.left1, this.bottom1];
+        this.demo_cubemap2=[this.top2, this.front2, this.right2, this.back2, this.left2, this.bottom2];
+        this.selectedMap = 0;
+        this.objectsIds = { 'Default': 0, 'Castle': 1, 'Field':2 };
+        this.cubeMaps = [this.demo_cubemap, this.demo_cubemap1, this.demo_cubemap2];
+        this.myCubeMap = new MyCubeMap(this, this.cubeMaps[this.selectedMap]);
      
     }
     initLights() {
@@ -142,18 +165,25 @@ export class MyScene extends CGFscene {
         // ---- END Primitive drawing section
 
         //Cube map
+        if(this.displayCubeMap){
         this.pushMatrix();
+        this.scale(1.5,1.5,1.5)
         this.myCubeMap.display()
         this.popMatrix();
+        }
 
        if(this.displayEarth){
             this.earthAppearance.apply()
             this.myEarth.display()
         }
         else{
+           // this.translate(0,-37,0)
             this.myTrack.display()
             this.myTrainModel.display();
         }
     }
-    
+
+    updateCubeMapTexture() {
+        this.myCubeMap.updateTexture(this.cubeMaps[this.selectedMap]);
+    }
 }

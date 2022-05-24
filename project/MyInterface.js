@@ -18,11 +18,17 @@ export class MyInterface extends CGFinterface {
 
         var obj = this;
 
+        var f1 = this.gui.addFolder("Cube Map");
+
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         
         this.gui.add(this.scene, 'displayEarth').name('Display Earth');
 
+
+        f1.add(this.scene, 'displayCubeMap').name('Display Cube Map');
+        f1.add(this.scene, 'selectedMap', this.scene.objectsIds).name('Selected Texture').onChange(this.scene.updateCubeMapTexture.bind(this.scene));
+        
         this.initKeys();
 
         return true;
@@ -54,4 +60,6 @@ export class MyInterface extends CGFinterface {
         return this.activeKeys[keyCode] || false;
     }
 
+
+   
 }

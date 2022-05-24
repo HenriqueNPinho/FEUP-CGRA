@@ -20,6 +20,7 @@ export class MyCubeMap extends CGFobject {
 
         this.myMaterial = new CGFappearance(this.scene);
         this.myQuad = new MyQuad(this.scene);
+        this.textures=textures;
 	}
   
   display(){
@@ -86,6 +87,8 @@ export class MyCubeMap extends CGFobject {
     
     
   }
-
+  updateTexture(texture) {
+    this.textures = texture;
+}
 
  }

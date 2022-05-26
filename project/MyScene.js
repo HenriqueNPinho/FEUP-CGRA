@@ -8,6 +8,7 @@ import { MySphere } from "./MySphere.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 import { MyCubeMap } from "./MyCubeMap.js";
 import { MyTrainModel } from "./MyTrainModel.js";
+import { MyCrane } from "./MyCrane.js";
 
 /**
 * MyScene
@@ -71,6 +72,9 @@ export class MyScene extends CGFscene {
 
         //Train
         this.myTrainModel = new MyTrainModel(this);
+
+        //Crane
+        this.myCrane = new MyCrane(this);
 
         //Earth
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
@@ -180,6 +184,7 @@ export class MyScene extends CGFscene {
            // this.translate(0,-37,0)
             this.myTrack.display()
             this.myTrainModel.display();
+            this.myCrane.display();
         }
     }
 

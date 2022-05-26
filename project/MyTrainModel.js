@@ -2,6 +2,7 @@ import {CGFtexture, CGFobject, CGFappearance} from '../lib/CGF.js';
 import { MyCircle } from "./MyCircle.js";
 import { MyCylinder } from "./MyCylinder.js";
 import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
+import { MyCrane } from "./MyCrane.js";
 
 export class MyTrainModel extends CGFobject {
 	constructor(scene) {
@@ -62,6 +63,9 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearanceCima.setShininess(120);
         this.cylinderAppearanceCima.setTexture(this.cylinderTextCima);
         this.cylinderAppearanceCima.setTextureWrap('LINEAR', 'LINEAR');
+
+        //gancho
+        //this.myCrane = new MyCrane(this);
 
     }
 
@@ -153,6 +157,10 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearance.apply();
         this.cylinder.display();
         this.scene.popMatrix();
+
+        //gancho
+        //queria por o gancho aqui mas esta a dar erro
+        //this.myCrane.display();
     }
 }
 

@@ -140,7 +140,7 @@ export class MyScene extends CGFscene {
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
         //To be done...
-        this.myMovingTrain.update(t)
+       this.myMovingTrain.update(t)
     }
 
     display() {

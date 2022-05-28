@@ -27,7 +27,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[0]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //cima
     this.scene.scale (50,50,50);
     this.scene.pushMatrix();
@@ -38,7 +38,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[1]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //frente
     this.scene.pushMatrix();
     this.scene.translate(0,0,-0.5);
@@ -47,7 +47,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[2]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //direita
     this.scene.pushMatrix();
     this.scene.translate(0.5,0,0);
@@ -57,7 +57,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[3]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //tras
     this.scene.pushMatrix();
     this.scene.rotate(Math.PI, 0,1,0);
@@ -67,7 +67,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[4]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //esquerda
     this.scene.pushMatrix();
     this.scene.translate(-0.5,0,0);
@@ -77,7 +77,7 @@ export class MyCubeMap extends CGFobject {
 
     this.myMaterial.setTexture(this.textures[5]);
     this.myMaterial.apply();
-    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+    this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.LINEAR);
     //baixo
     this.scene.pushMatrix();
     this.scene.translate(0,-0.5,0);

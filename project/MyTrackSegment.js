@@ -10,12 +10,12 @@ import { MyTrackQuad } from './MyTrackQuad.js';
           this.initMaterials()
           this.angleDeg = Math.atan2(this.z1-this.z,this.x1-this.x) * 180 / Math.PI;
           this.pointDist= Math.sqrt( Math.pow((this.x-this.x1),2) + Math.pow((this.z-this.z1),2) )
-          if(this.angleDeg<0)
-            this.angleDeg+=360
+         
+          /*
 		      console.log("angulo:")
 			    console.log(this.angleDeg)
           console.log("dist")
-          console.log(this.pointDist)
+          console.log(this.pointDist)*/
       }
       
       initBuffers(x, x1, z,z1) {
@@ -41,25 +41,11 @@ import { MyTrackQuad } from './MyTrackQuad.js';
 
       display(){
         this.scene.pushMatrix()
-       
-        /*if(this.angleDeg == 90 || this.angleDeg ==0){
-          if(this.z == this.z1){
-            this.scene.translate(this.x, 0, this.z)
-            this.scene.scale(this.pointDist/4, 1,1)
-          }
-          else{
-            this.scene.translate(this.x, 0, this.z)
-            this.scene.rotate(-Math.PI/2,0,1,0)
-            this.scene.scale(this.pointDist/4,1,1)
-          }
 
-        }
-        else { //(.:) */
-          this.scene.translate(this.x, 0, this.z)
-          this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
-          this.scene.scale(this.pointDist/4, 1,1)
-      //  }
-       // this.scene.scale(this.pointDist,1,1)
+        this.scene.translate(this.x, 0, this.z)
+        this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
+        this.scene.scale(this.pointDist/4, 1,1)
+
         this.quad.updateTexCoords([
           0,0,
           this.pointDist/4,0,

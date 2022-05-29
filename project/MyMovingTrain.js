@@ -16,15 +16,13 @@ export class MyMovingTrain extends CGFobject {
         this.train = new MyTrainModel(this.scene);
         this.speed = 0.01;
         this.currSeg = 0;
-        this.currState='accelaration'
+        this.currState='cruise'  //mudar para accelaration
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
-        this.distAtual = 0;
+        this.distAtual = 0.0;
 
         console.log(this.track.segs)
-        //console.log("(x,z) : (" + this.track.segs[this.currSeg].x + "," + this.track.segs[this.currSeg].z + ")")
-        //console.log("(x1,z1) : (" + this.track.segs[this.currSeg].x1 + "," + this.track.segs[this.currSeg].z1 + ")")
 
 
     }
@@ -35,74 +33,73 @@ export class MyMovingTrain extends CGFobject {
         let segDist = Math.sqrt( Math.pow((seg.x-seg.x1),2) + Math.pow((seg.z-seg.z1),2) )
         let nxtSeg;
         this.speed = 1; //0.01 é demais
-       /* if(this.currSeg+1 < this.track.segs.length){
-            nxtSeg=this.track.segs[this.currSeg++];
+      
+      /*  if(this.currSeg+1 < this.track.segs.length){
+            nxtSeg=this.track.segs[this.currSeg+1];
         }
         else{ 
-            this.currSeg=0;
              nxtSeg=this.track.segs[0];
             
         }*/
-        
-        if(this.lastT!=0){
-            this.orientation = Math.atan2(seg.z1-seg.z,seg.x1-seg.x);
+         
+        if(this.lastT!=0){  
+            switch(this.currState){
 
-            let dir= [ seg.x1 - seg.x, seg.z1-seg.z]
-            let deltatime= (t-this.lastT)/1000
-            let dirx= dir[0] * deltatime * this.speed
-            let dirz=dir[1]*deltatime* this.speed
-            this.distAtual+= Math.sqrt( Math.pow(dirx,2) + Math.pow(dirz,2) )
-            
-            this.position=[this.position[0]+dirx, this.position[1]+dirz]
+               /* case 'accelaration': 
+                    //acelerar até ao proximo seg
 
-            if(this.distAtual +0.04 > segDist){
-                this.currSeg++
-                this.distAtual=0;
-            }
-            if(this.currSeg == this.track.segs.length){
-                this.currSeg=0;
+                    if(nxtSeg.type == 'simple'){
+                        this.currState='cruise'
+                    }
+                    else{
+                        this.currState='decelaration'
+                    }
+                    break;*/
+
+                case  'cruise':
+                    //manter até ao proximo segmento
+                    this.orientation = Math.atan2(seg.z1-seg.z,seg.x1-seg.x);
+
+                    let dir= [ seg.x1 - seg.x, seg.z1-seg.z]
+                    let deltatime= (t-this.lastT)/1000
+                    let dirx= dir[0] * deltatime * this.speed
+                    let dirz=dir[1]*deltatime* this.speed
+                    this.distAtual+= Math.sqrt( Math.pow(dirx,2) + Math.pow(dirz,2) )
+                    
+                    this.position=[this.position[0]+dirx, this.position[1]+dirz]
+
+                    if(this.distAtual +0.04 > segDist){
+                        this.currSeg++
+                        if(this.currSeg == this.track.segs.length){
+                            this.currSeg=0;
+                        }
+                        this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
+                        this.distAtual=0;
+                    }
+
+                    //if(nxtSeg.type == 'station'){
+                    //    this.currState='decelaration'
+                    //}
+               
+
+               /* case   'decelaration': 
+                        //parar
+                        this.currState='stoped'
+                    break;
+
+                case    'stoped': 
+                        //carregar madeira
+
+                        this.currState='accelaration'
+                    break;
+                
+                default:
+                    console.log("break")
+                    break;*/
             }
         }
-
-        this.lastT=t;
-        /* switch(currState){
-
-            case 'accelaration': 
-                //acelerar até ao proximo seg
-
-                if(nxtSeg.type == 'simple'){
-                    this.currState='cruise'
-                }
-                else{
-                    this.currState='decelaration'
-                }
-                break;
-
-            case  'cruise':
-                //manter até ao proximo segmento
-
-                if(nxtSeg.type == 'station'){
-                    this.currState='decelaration'
-                }
-
-                break;
-
-            case   'decelaration': 
-                    //parar
-                    this.currState='stoped'
-                break;
-
-            case    'stoped': 
-                    //carregar madeira
-
-                    this.currState='accelaration'
-                break;
-            
-            default:
-                console.log("break")
-                break;
-        }*/
-}
+        this.lastT=t;   
+    }
 
     display() {
         this.scene.translate(this.position[0],0,this.position[1]);

@@ -17,14 +17,14 @@ export class MyMovingTrain extends CGFobject {
         this.speed = 0.01;
         this.currSeg = 0;
         this.currState='accelaration'
-        this.position =[this.track.segs[this.currSeg].x, 0,this.track.segs[this.currSeg].z]
+        this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
         this.distAtual = 0;
 
         console.log(this.track.segs)
-        console.log("(x,z) : (" + this.track.segs[this.currSeg].x + "," + this.track.segs[this.currSeg].z + ")")
-        console.log("(x1,z1) : (" + this.track.segs[this.currSeg].x1 + "," + this.track.segs[this.currSeg].z1 + ")")
+        //console.log("(x,z) : (" + this.track.segs[this.currSeg].x + "," + this.track.segs[this.currSeg].z + ")")
+        //console.log("(x1,z1) : (" + this.track.segs[this.currSeg].x1 + "," + this.track.segs[this.currSeg].z1 + ")")
 
 
     }
@@ -53,7 +53,7 @@ export class MyMovingTrain extends CGFobject {
             let dirz=dir[1]*deltatime* this.speed
             this.distAtual+= Math.sqrt( Math.pow(dirx,2) + Math.pow(dirz,2) )
             
-            this.position=[this.position[0]+dirx, this.position[1],this.position[2]+dirz]
+            this.position=[this.position[0]+dirx, this.position[1]+dirz]
 
             if(this.distAtual +0.04 > segDist){
                 this.currSeg++
@@ -105,8 +105,8 @@ export class MyMovingTrain extends CGFobject {
 }
 
     display() {
-        this.scene.translate(this.position[0],this.position[1],this.position[2]);
-        this.scene.rotate(this.orientation,0,1,0)
+        this.scene.translate(this.position[0],0,this.position[1]);
+        this.scene.rotate(-this.orientation,0,1,0)
         this.scene.rotate(Math.PI/2,0,1,0)
         this.train.display()
     }

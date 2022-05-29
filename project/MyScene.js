@@ -62,6 +62,8 @@ export class MyScene extends CGFscene {
             {x: 6, z: 24.75, type: 'station'}, //G
 
            {x: 25, z: 20, type: 'simple'}, // H
+
+           {x: 22.5, z: -2.5, type: 'station'}, //G
           
         ] 
         this.displayAll=false;

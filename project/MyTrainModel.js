@@ -65,7 +65,7 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearanceCima.setTextureWrap('LINEAR', 'LINEAR');
 
         //gancho
-        //this.myCrane = new MyCrane(this);
+        this.myCrane = new MyCrane(this.scene);
 
     }
 
@@ -159,8 +159,7 @@ export class MyTrainModel extends CGFobject {
         this.scene.popMatrix();
 
         //gancho
-        //queria por o gancho aqui mas esta a dar erro
-        //this.myCrane.display();
+        this.myCrane.display();
     }
 }
 

@@ -11,10 +11,14 @@ import { MyTrackSegment } from './MyTrackSegment.js';
           super(scene);
   
           this.segs=[]
+      
           for(var i=1; i<track.length; i++){
-            this.segs.push( { x: track[i-1].x, z:track[i-1].z, x1: track[i].x, z1:track[i].z, type: track[i].type} )
+
+            this.segs.push( { x: track[i-1].x, z:track[i-1].z, x1: track[i].x, z1:track[i].z, type: track[i].type, 
+              dist:  Math.sqrt( Math.pow((track[i-1].x-track[i].x),2) + Math.pow((track[i-1].z-track[i].z),2))} )
           }
-        this.segs.push( { x: track[track.length-1].x, z:track[track.length-1].z, x1: track[0].x, z1:track[0].z, type: track[0].type})
+        this.segs.push( { x: track[track.length-1].x, z:track[track.length-1].z, x1: track[0].x, z1:track[0].z, type: track[0].type,
+          dist:  Math.sqrt( Math.pow((track[track.length-1].x-track[0].x),2) + Math.pow((track[track.length-1].z-track[0].z),2))})
 
           this.initBuffers();
       }

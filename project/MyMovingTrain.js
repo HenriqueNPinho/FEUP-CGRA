@@ -26,12 +26,11 @@ export class MyMovingTrain extends CGFobject {
 
     update(t){ //50 millis, max speed 0,01/sec -> 0,0005 /milli
 
-        let seg = this.track.segs[this.currSeg]; //segmento atual
-        let segDist = Math.sqrt( Math.pow((seg.x-seg.x1),2) + Math.pow((seg.z-seg.z1),2)) //comprimento do seg
+      
         this.speed = 1; //0.01 é demais, apagar mais tarde
 
         if(this.lastT!=0){  
-            this.stateMachine(t, segDist,seg)
+            this.stateMachine(t)
         }
         this.lastT=t;   
     }
@@ -43,8 +42,8 @@ export class MyMovingTrain extends CGFobject {
         this.train.display()
     }
 
-    stateMachine(t, segDist, seg){
-
+    stateMachine(t){
+        let seg = this.track.segs[this.currSeg]; //segmento atual
         this.orientation = Math.atan2(seg.z1-seg.z,seg.x1-seg.x); 
         let dir= [ seg.x1 - seg.x, seg.z1-seg.z] //vetor 
         let deltatime= (t-this.lastT)/1000 //
@@ -54,13 +53,13 @@ export class MyMovingTrain extends CGFobject {
            case 'accelaration': 
                 //acelerar até ao proximo seg
 
-               this.speedChange += (this.speed/segDist) 
+               this.speedChange += (this.speed/seg.dist) 
                if(this.speedChange>this.speed){
                    this.speedChange=1
                }
                this.nextPos(dir,deltatime)
 
-                if(this.distAtual > segDist){
+                if(this.distAtual > seg.dist){
                     this.changeSeg()
                     if(this.track.segs[this.currSeg].type=='simple'){
                         this.currState='cruise'
@@ -74,7 +73,7 @@ export class MyMovingTrain extends CGFobject {
             case  'cruise':
                 this.nextPos(dir, deltatime)
 
-                if(this.distAtual > segDist){
+                if(this.distAtual > seg.dist){
                     this.changeSeg()
                     if(this.track.segs[this.currSeg].type=='station'){
                         this.currState='decelaration'
@@ -84,7 +83,7 @@ export class MyMovingTrain extends CGFobject {
 
             case   'decelaration': 
                 
-                   this.speedChange = this.speed-((this.speed/segDist)*this.distAtual)
+                   this.speedChange = this.speed-((this.speed/seg.dist)*this.distAtual)
                     if (this.speedChange<0.03)
                        this.speedChange=0
                    

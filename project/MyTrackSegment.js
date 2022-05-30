@@ -6,23 +6,23 @@ import { MyTrackQuad } from './MyTrackQuad.js';
       constructor(scene, seg) {
           super(scene);
 
-          this.initBuffers(seg.x, seg.x1, seg.z, seg.z1);
+          this.initBuffers(seg.x, seg.x1, seg.z, seg.z1, seg.dist);
           this.initMaterials()
           this.angleDeg = Math.atan2(this.z1-this.z,this.x1-this.x) * 180 / Math.PI;
-          this.pointDist= Math.sqrt( Math.pow((this.x-this.x1),2) + Math.pow((this.z-this.z1),2) )
          
           /*
 		      console.log("angulo:")
 			    console.log(this.angleDeg)
           console.log("dist")
-          console.log(this.pointDist)*/
+          console.log(this.dist)*/
       }
       
-      initBuffers(x, x1, z,z1) {
+      initBuffers(x, x1, z,z1,dist) {
         this.x=x
         this.x1=x1
         this.z=z
         this.z1=z1
+        this.dist=dist
         
         this.quad= new MyTrackQuad(this.scene)
       }
@@ -44,12 +44,12 @@ import { MyTrackQuad } from './MyTrackQuad.js';
 
         this.scene.translate(this.x, 0, this.z)
         this.scene.rotate(-this.angleDeg*Math.PI / 180 ,0,1,0)
-        this.scene.scale(this.pointDist/4, 1,1)
+        this.scene.scale(this.dist/4, 1,1)
 
         this.quad.updateTexCoords([
           0,0,
-          this.pointDist/4,0,
-          this.pointDist/4,1,
+          this.dist/4,0,
+          this.dist/4,1,
           0,1
 
         ])

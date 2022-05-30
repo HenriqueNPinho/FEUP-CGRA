@@ -55,6 +55,17 @@ export class MyCrane extends CGFobject {
         this.caboAppearance.setShininess(120);
         this.caboAppearance.setTexture(this.caboText);
         this.caboAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
+        //lenha
+        /*this.lenhaText = new CGFtexture(this.scene, 'images/lenhaText.jpg');
+        this.lenha = new MyCylinder(this.scene, 10, 3, 0.7);
+        this.lenhaAppearance = new CGFappearance(this.scene);
+        this.lenhaAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+        this.lenhaAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.lenhaAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+        this.lenhaAppearance.setShininess(120);
+        this.lenhaAppearance.setTexture(this.lenhaText);
+        this.lenhaAppearance.setTextureWrap('LINEAR', 'LINEAR');*/
     }
 
     display(){
@@ -89,5 +100,15 @@ export class MyCrane extends CGFobject {
         this.caboAppearance.apply();
         this.cabo.display();
         this.scene.popMatrix();
+
+        //lenha
+        /*this.scene.pushMatrix();
+        this.scene.translate(0, 2, -2.7);
+        this.scene.rotate(-Math.PI/2, 0, 1, 0);
+        this.scene.rotate(Math.PI/2, 1, 0, 0);
+        this.lenhaAppearance.apply();
+        this.lenha.display();
+        this.scene.popMatrix();*/
+
     }
 }

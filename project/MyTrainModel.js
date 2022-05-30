@@ -67,6 +67,16 @@ export class MyTrainModel extends CGFobject {
         //gancho
         this.myCrane = new MyCrane(this.scene);
 
+        //caixa
+        this.topC = new CGFtexture(this.scene,'images/metalText.jpg');
+        this.frontC = new CGFtexture(this.scene, 'images/metalText.jpg');
+        this.backC = new CGFtexture(this.scene, 'images/metalText.jpg');
+        this.leftC = new CGFtexture(this.scene, 'images/metalText.jpg');
+        this.rightC = new CGFtexture(this.scene,'images/metalText.jpg');
+        this.bottomC = new CGFtexture(this.scene, 'images/metalText.jpg');
+        this.caixaTexture = [this.topC, this.frontC, this.rightC, this.backC, this.leftC, this.bottomC];
+        this.caixa = new MyUnitCubeQuad(this.scene, this.caixaTexture);
+
     }
 
     display(){
@@ -160,6 +170,13 @@ export class MyTrainModel extends CGFobject {
 
         //gancho
         this.myCrane.display();
+
+        //caixa
+        this.scene.pushMatrix();
+        this.scene.translate(0, 2, -2.7);
+        this.scene.scale(2.25, 1, 1.25);
+        this.caixa.display();
+        this.scene.popMatrix();
     }
 }
 

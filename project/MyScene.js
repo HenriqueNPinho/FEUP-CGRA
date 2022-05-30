@@ -49,7 +49,7 @@ export class MyScene extends CGFscene {
           
             {x: 20, z: -25, type: 'simple'}, //A
 
-            {x: 5, z: -25, type: 'station'}, //B
+            {x: 0, z: -25, type: 'station'}, //B
           
             {x: -20, z: -25, type: 'simple'}, //C
 

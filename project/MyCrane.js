@@ -77,7 +77,7 @@ export class MyCrane extends CGFobject {
         //cilindro movel
         this.scene.pushMatrix();
         this.scene.translate(0, 5.2, -1);
-        this.scene.rotate(Math.PI/2, 0, 1, 0);
+        this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.cylinderMovelAppearance.apply();
         this.cylinderMovel.display();
@@ -85,7 +85,7 @@ export class MyCrane extends CGFobject {
 
         //cabo
         this.scene.pushMatrix();
-        this.scene.translate(2.9, 2.3, -1)
+        this.scene.translate(-2.9, 2.3, -1)
         this.caboAppearance.apply();
         this.cabo.display();
         this.scene.popMatrix();

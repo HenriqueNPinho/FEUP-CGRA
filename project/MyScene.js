@@ -78,7 +78,7 @@ export class MyScene extends CGFscene {
 
         this.myMovingTrain = new MyMovingTrain(this, this.track);
         //Crane
-        this.myCrane = new MyCrane(this);
+        //this.myCrane = new MyCrane(this);
 
         //Earth
         this.earthText = new CGFtexture(this, 'images/earth.jpg');
@@ -189,7 +189,7 @@ export class MyScene extends CGFscene {
            // this.translate(0,-37,0)
             this.myTrack.display()
            // this.myTrainModel.display();
-            this.myCrane.display();
+            //this.myCrane.display();
         }
         this.myMovingTrain.display()
     }

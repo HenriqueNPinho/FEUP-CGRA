@@ -15,12 +15,13 @@ export class MyMovingTrain extends CGFobject {
         
         this.train = new MyTrainModel(this.scene);
         this.speed = 0.01;
-        this.currSeg = 1; //mudar para 0
-        this.currState='cruise'  //mudar para accelaration
+        this.currSeg = 0;
+        this.currState='accelaration'  
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
-        this.distAtual = 0.0;
+        this.distAtual = 0;
+        this.speedChange=0;
 
         console.log(this.track.segs)
 
@@ -31,7 +32,9 @@ export class MyMovingTrain extends CGFobject {
     
         let seg = this.track.segs[this.currSeg];
         let segDist = Math.sqrt( Math.pow((seg.x-seg.x1),2) + Math.pow((seg.z-seg.z1),2) )
-        this.speed = 2; //0.01 é demais, apagar mais tarde
+        this.speed = 1; //0.01 é demais, apagar mais tarde
+ 
+
         if(this.lastT!=0){  
 
             this.orientation = Math.atan2(seg.z1-seg.z,seg.x1-seg.x);
@@ -42,16 +45,36 @@ export class MyMovingTrain extends CGFobject {
 
             switch(this.currState){
 
-               /* case 'accelaration': 
+               case 'accelaration': 
                     //acelerar até ao proximo seg
 
-                    if(nxtSeg.type == 'simple'){
-                        this.currState='cruise'
+                   this.speedChange += (this.speed/segDist)
+                 
+
+                    dirx= dir[0] * deltatime *this.speedChange
+                    dirz=dir[1]*deltatime*this.speedChange
+
+                    this.distAtual+= Math.sqrt( Math.pow(dirx,2) + Math.pow(dirz,2) )
+                   
+
+                    this.position=[this.position[0]+dirx, this.position[1]+dirz]
+
+                    if(this.distAtual > segDist){
+                        this.currSeg++
+                        if(this.currSeg == this.track.segs.length){
+                            this.currSeg=0;
+                        }
+                        this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
+                        this.distAtual=0;
+                        this.speedChange=0;
+                        if(this.track.segs[this.currSeg].type=='simple'){
+                            this.currState='cruise'
+                        }
+                        else{
+                            this.currState='decelaration'
+                        }
                     }
-                    else{
-                        this.currState='decelaration'
-                    }
-                    break;*/
+                    break;
 
                 case  'cruise':
                     //manter até ao proximo segmento
@@ -74,35 +97,39 @@ export class MyMovingTrain extends CGFobject {
                             this.currState='decelaration'
                         }
                     }
+                    break;
 
                 case   'decelaration': 
                     
-                        let speed = this.speed-((this.speed/segDist)*this.distAtual)
-                        if (speed<0.001)
-                            speed=0
-                            console.log(speed)
-                        dirx= dir[0] * deltatime * speed
-                        dirz=dir[1]*deltatime* speed
+                       this.speedChange = this.speed-((this.speed/segDist)*this.distAtual)
+                        if (this.speedChange<0.03)
+                           this.speedChange=0
+                       // console.log(this.speedChange)
+                        dirx= dir[0] * deltatime *this.speedChange
+                        dirz=dir[1]*deltatime*this.speedChange
                         this.distAtual+= Math.sqrt( Math.pow(dirx,2) + Math.pow(dirz,2) )
 
                         this.position=[this.position[0]+dirx, this.position[1]+dirz]
 
-                        if(this.distAtual > segDist){
+                        if(this.speedChange==0){
                             this.currSeg++
                             if(this.currSeg == this.track.segs.length){
                                 this.currSeg=0;
                             }
                             this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
                             this.distAtual=0;
+                            this.speedChange=0;
+                            this.currState='stoped'
                         }
-                        //if(speed==0)
-                          //  this.currState='stoped'
+                      //  if(this.speedChange==0)
+                          
                         break;
 
                 case    'stoped': 
-                        //carregar madeira
+                      
+                       // this.currSeg++;
 
-                        //this.currState='accelaration'
+                        this.currState='accelaration'
                     break;
                 
                 default:

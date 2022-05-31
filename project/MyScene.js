@@ -176,6 +176,9 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyC")){ //partir sem carga
             text += " C ";
             keysPressed = true;
+            if(this.myMovingTrain.currState=='stoped'){
+                this.myMovingTrain.currState='accelaration'
+            }
         }
         if(keysPressed){
             console.log(text);

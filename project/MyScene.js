@@ -160,10 +160,12 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyW")){ //cima
             text += " W ";
             keysPressed = true;
+            this.myMovingTrain.train.myCrane.tilt(-1);
         }
         if(this.gui.isKeyPressed("KeyS")){ //baixo
             text += " S ";
             keysPressed = true;
+            this.myMovingTrain.train.myCrane.tilt(1);
         }
         if(this.gui.isKeyPressed("KeyP")){ //agarrar e largar
             text += " P ";

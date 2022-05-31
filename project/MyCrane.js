@@ -88,11 +88,13 @@ export class MyCrane extends CGFobject {
         this.sphere.display();
         this.scene.popMatrix();
 
-        //cilindro movel
+       //corda e cilindro
         this.scene.pushMatrix();
-      
         this.scene.translate(0, 5.2, 0);
-        //this.scene.rotate(this.angRot*Math.PI/180,0,0,1) //rotacao
+        this.scene.rotate(this.angInc*Math.PI/180,0,0,1) //rotacao
+
+         //cilindro movel
+        this.scene.pushMatrix();
         this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.cylinderMovelAppearance.apply();
@@ -101,11 +103,14 @@ export class MyCrane extends CGFobject {
 
         //cabo
         this.scene.pushMatrix();
-        this.scene.translate(-2.9, 2.3, 0)
+        this.scene.scale(1,-1,1)
+        this.scene.translate(-2.9, 0, 0)
         this.caboAppearance.apply();
         this.cabo.display();
         this.scene.popMatrix();
-        this.scene.popMatrx();
+        this.scene.popMatrix();
+        this.scene.popMatrix();
+        
 
         //lenha
         /*this.scene.pushMatrix();
@@ -121,6 +126,19 @@ export class MyCrane extends CGFobject {
         this.angRot+=val*10;
     }
     tilt(val){ //alterar angulo inclinacao
+        if(this.angInc>=-35 && this.angInc<=0){
+            this.angInc+=val*5
+            console.log("1")
+        }
+        else if(this.angInc<-35 && val>0){
+            this.angInc+=val*5 //-40 limite em cima
+
+        }
+        else if(this.angInc>0 && val<0){
+            this.angInc+=val*5 //_5 limite em baixo
+        
+        }
+        
     }
     reset(){ //voltar ao inicial 
 

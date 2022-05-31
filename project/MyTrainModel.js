@@ -81,7 +81,7 @@ export class MyTrainModel extends CGFobject {
 
     display(){
 
-        //retangulo
+       //retangulo
         this.scene.pushMatrix();
         this.scene.translate(0, 1, 0);
         this.scene.scale(2.5, 1, 7.5);
@@ -167,7 +167,6 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearance.apply();
         this.cylinder.display();
         this.scene.popMatrix();
-
         //gancho
         this.scene.pushMatrix();
         this.myCrane.display();

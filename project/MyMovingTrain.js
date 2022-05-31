@@ -16,7 +16,7 @@ export class MyMovingTrain extends CGFobject {
         this.train = new MyTrainModel(this.scene);
         this.speed = 0.01;
         this.currSeg = 0;
-        this.currState='decelaration'  
+        this.currState='stoped'  
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
@@ -33,13 +33,6 @@ export class MyMovingTrain extends CGFobject {
             this.stateMachine(t)
         }
         this.lastT=t;   
-    }
-
-    display() {
-        this.scene.translate(this.position[0],0,this.position[1]);
-        this.scene.rotate(-this.orientation,0,1,0)
-        this.scene.rotate(Math.PI/2,0,1,0)
-        this.train.display()
     }
 
     stateMachine(t){
@@ -97,7 +90,7 @@ export class MyMovingTrain extends CGFobject {
                     break;
 
             case    'stoped': 
-                    this.currState='accelaration'
+                   
                 break;
             
             default:
@@ -125,6 +118,14 @@ export class MyMovingTrain extends CGFobject {
         }
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.distAtual=0
+    }
+
+
+    display() {
+        this.scene.translate(this.position[0],0,this.position[1]);
+        this.scene.rotate(-this.orientation,0,1,0)
+        this.scene.rotate(Math.PI/2,0,1,0)
+        this.train.display()
     }
 
 }

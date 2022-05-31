@@ -19,6 +19,7 @@ export class MyCubeMap extends CGFobject {
         this.face6 = new MyQuad(this.scene); //baixo
 
         this.myMaterial = new CGFappearance(this.scene);
+        this.myMaterial.setEmission(1,1,1,1)
         this.myQuad = new MyQuad(this.scene);
         this.textures=textures;
 	}

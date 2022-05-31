@@ -122,10 +122,10 @@ export class MyCrane extends CGFobject {
         this.scene.popMatrix();*/
 
     }
-    turn(val){ //alterar angulo rotacao
+    turn(val){ 
         this.angRot+=val*10;
     }
-    tilt(val){ //alterar angulo inclinacao
+    tilt(val){ 
         if(this.angInc>=-35 && this.angInc<=0){
             this.angInc+=val*5
             console.log("1")

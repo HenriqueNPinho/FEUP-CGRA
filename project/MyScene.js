@@ -174,6 +174,8 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyR")){ //reset
             text += " R ";
             keysPressed = true;
+            this.myMovingTrain.train.myCrane.angInc=0;
+            this.myMovingTrain.train.myCrane.angRot=0;
         }
         if(this.gui.isKeyPressed("KeyC")){ //partir sem carga
             text += " C ";

@@ -150,10 +150,12 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyA")){ //esquerda
             text += " A ";
             keysPressed = true;
+            this.myMovingTrain.train.myCrane.turn(1);
         }
         if(this.gui.isKeyPressed("KeyD")){ //direita
             text += " D ";
             keysPressed = true;
+            this.myMovingTrain.train.myCrane.turn(-1);
         }
         if(this.gui.isKeyPressed("KeyW")){ //cima
             text += " W ";
@@ -240,3 +242,9 @@ export class MyScene extends CGFscene {
         this.myCubeMap.updateTexture(this.cubeMaps[this.selectedMap]);
     }
 }
+
+//Checklist
+//cena da luz do cubo
+//rodas a andar
+//tirar tampa da caixa - usar cubos
+//lenha

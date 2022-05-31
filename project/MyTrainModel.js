@@ -107,7 +107,7 @@ export class MyTrainModel extends CGFobject {
 
         //cubo cima
         this.scene.pushMatrix();
-        this.scene.translate(0, 2.7, -1);
+        this.scene.translate(0, 2.7, 0);
         this.scene.scale(2.0, 2.5, 1.8);
         this.cube.display();
         this.scene.popMatrix();
@@ -169,7 +169,9 @@ export class MyTrainModel extends CGFobject {
         this.scene.popMatrix();
 
         //gancho
+        this.scene.pushMatrix();
         this.myCrane.display();
+        this.scene.popMatrix();
 
         //caixa
         this.scene.pushMatrix();

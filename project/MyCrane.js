@@ -1,12 +1,12 @@
 import {CGFtexture, CGFobject, CGFappearance} from '../lib/CGF.js';
-import { MyCircle } from "./MyCircle.js";
 import { MySphere } from "./MySphere.js";
 import { MyCylinder } from "./MyCylinder.js";
-import { MyUnitCubeQuad } from "./MyUnitCubeQuad.js";
 
 export class MyCrane extends CGFobject {
 	constructor(scene) {
 		super(scene);
+        this.angRot = 0;
+        this.angInc = 0;
 		this.initBuffers();
 	}
 
@@ -69,10 +69,13 @@ export class MyCrane extends CGFobject {
     }
 
     display(){
+        this.scene.pushMatrix()
 
+        //thid.translate()
+        this.scene.rotate(this.angRot*Math.PI/180,0,1,0) //rotacao
         //cilindro vertical
         this.scene.pushMatrix();
-        this.scene.translate(0, 3, -1);
+        this.scene.translate(0, 3, 0);
         this.cylinderAppearance.apply();
         this.cylinder.display();
         this.scene.popMatrix();
@@ -80,14 +83,16 @@ export class MyCrane extends CGFobject {
         //esfera
         this.scene.pushMatrix();
         this.scene.scale(0.4, 0.4, 0.4);
-        this.scene.translate(0, 13, -2.5);
+        this.scene.translate(0, 13, 0);
         this.sphereAppearance.apply();
         this.sphere.display();
         this.scene.popMatrix();
 
         //cilindro movel
         this.scene.pushMatrix();
-        this.scene.translate(0, 5.2, -1);
+      
+        this.scene.translate(0, 5.2, 0);
+        //this.scene.rotate(this.angRot*Math.PI/180,0,0,1) //rotacao
         this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.scene.rotate(Math.PI/2, 1, 0, 0);
         this.cylinderMovelAppearance.apply();
@@ -96,10 +101,11 @@ export class MyCrane extends CGFobject {
 
         //cabo
         this.scene.pushMatrix();
-        this.scene.translate(-2.9, 2.3, -1)
+        this.scene.translate(-2.9, 2.3, 0)
         this.caboAppearance.apply();
         this.cabo.display();
         this.scene.popMatrix();
+        this.scene.popMatrx();
 
         //lenha
         /*this.scene.pushMatrix();
@@ -109,6 +115,14 @@ export class MyCrane extends CGFobject {
         this.lenhaAppearance.apply();
         this.lenha.display();
         this.scene.popMatrix();*/
+
+    }
+    turn(val){ //alterar angulo rotacao
+        this.angRot+=val*10;
+    }
+    tilt(val){ //alterar angulo inclinacao
+    }
+    reset(){ //voltar ao inicial 
 
     }
 }

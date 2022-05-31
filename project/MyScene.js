@@ -10,6 +10,7 @@ import { MyCubeMap } from "./MyCubeMap.js";
 import { MyTrainModel } from "./MyTrainModel.js";
 import { MyMovingTrain } from "./MyMovingTrain.js";
 import { MyCrane } from "./MyCrane.js";
+import { MyStationModel } from "./MyStationModel.js";
 
 /**
 * MyScene
@@ -68,7 +69,7 @@ export class MyScene extends CGFscene {
         ] 
         this.displayAll=false;
 
-      
+        this.myStationModel = new MyStationModel(this);
  
         //Track
         this.myTrack =  new MyTrack(this, this.track);
@@ -236,10 +237,11 @@ export class MyScene extends CGFscene {
         else{
            // this.translate(0,-37,0)
             this.myTrack.display()
+            this.myStationModel.display();
            // this.myTrainModel.display();
             //this.myCrane.display();
         }
-        this.myMovingTrain.display()
+        this.myMovingTrain.display();
     }
 
     updateCubeMapTexture() {

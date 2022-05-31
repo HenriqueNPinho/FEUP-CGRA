@@ -204,4 +204,3 @@ export class MyTrainModel extends CGFobject {
         this.scene.popMatrix();
     }
 }
-////this.scene.scale(2.25, 1, 1.25);

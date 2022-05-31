@@ -88,12 +88,12 @@ export class MyCrane extends CGFobject {
         this.sphere.display();
         this.scene.popMatrix();
 
-       //corda e cilindro
+        //corda e cilindro
         this.scene.pushMatrix();
         this.scene.translate(0, 5.2, 0);
         this.scene.rotate(this.angInc*Math.PI/180,0,0,1) //rotacao
 
-         //cilindro movel
+        //cilindro movel
         this.scene.pushMatrix();
         this.scene.rotate(-Math.PI/2, 0, 1, 0);
         this.scene.rotate(Math.PI/2, 1, 0, 0);

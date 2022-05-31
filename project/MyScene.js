@@ -250,5 +250,3 @@ export class MyScene extends CGFscene {
 //Checklist
 //cena da luz do cubo
 //rodas a andar
-//tirar tampa da caixa - usar cubos
-//lenha

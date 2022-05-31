@@ -84,7 +84,7 @@ export class MyMovingTrain extends CGFobject {
             case   'decelaration': 
                 
                    this.speedChange = this.speed-((this.speed/seg.dist)*this.distAtual)
-                    if (this.speedChange<0.03)
+                    if (this.speedChange<0.0015)
                        this.speedChange=0
                    
                    this.nextPos(dir, deltatime)
@@ -97,7 +97,7 @@ export class MyMovingTrain extends CGFobject {
                     break;
 
             case    'stoped': 
-                    this.currState='accelaration'
+                    
                 break;
             
             default:

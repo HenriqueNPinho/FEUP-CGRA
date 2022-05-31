@@ -147,12 +147,32 @@ export class MyScene extends CGFscene {
         var text = "Keys pressed: ";
         var keysPressed = false;
 
-        if(this.gui.isKeyPressed("KeyW")){
+        if(this.gui.isKeyPressed("KeyA")){ //esquerda
+            text += " A ";
+            keysPressed = true;
+        }
+        if(this.gui.isKeyPressed("KeyD")){ //direita
+            text += " D ";
+            keysPressed = true;
+        }
+        if(this.gui.isKeyPressed("KeyW")){ //cima
             text += " W ";
             keysPressed = true;
         }
-        if(this.gui.isKeyPressed("KeyS")){
+        if(this.gui.isKeyPressed("KeyS")){ //baixo
             text += " S ";
+            keysPressed = true;
+        }
+        if(this.gui.isKeyPressed("KeyP")){ //agarrar e largar
+            text += " P ";
+            keysPressed = true;
+        }
+        if(this.gui.isKeyPressed("KeyR")){ //reset
+            text += " R ";
+            keysPressed = true;
+        }
+        if(this.gui.isKeyPressed("KeyC")){ //partir sem carga
+            text += " C ";
             keysPressed = true;
         }
         if(keysPressed){
@@ -164,7 +184,7 @@ export class MyScene extends CGFscene {
     update(t){
         this.checkKeys();
         //To be done...
-       this.myMovingTrain.update(t)
+        this.myMovingTrain.update(t)
     }
 
     display() {

@@ -35,11 +35,11 @@ export class MyStationModel extends CGFobject {
 
         //telhado
         this.top = new CGFtexture(this.scene,'images/estacao/telhaText.jpg');
-        this.front = new CGFtexture(this.scene, 'images/estacao/paredeBrancaText.jpg');
+        this.front = new CGFtexture(this.scene, 'images/estacao/telhaText.jpg');
         this.back = new CGFtexture(this.scene, 'images/estacao/telhaText.jpg');
-        this.left = new CGFtexture(this.scene, 'images/estacao/paredeBrancaText.jpg');
-        this.right = new CGFtexture(this.scene,'images/estacao/paredeBrancaText.jpg');
-        this.bottom = new CGFtexture(this.scene, 'images/estacao/paredeBrancaText.jpg');
+        this.left = new CGFtexture(this.scene, 'images/estacao/telhaText.jpg');
+        this.right = new CGFtexture(this.scene,'images/estacao/telhaText.jpg');
+        this.bottom = new CGFtexture(this.scene, 'images/estacao/telhaText.jpg');
         this.telhadoTexture = [this.top, this.front, this.right, this.back, this.left, this.bottom];
         this.telhado = new MyUnitCubeQuad(this.scene, this.telhadoTexture);
 
@@ -108,30 +108,30 @@ export class MyStationModel extends CGFobject {
         //telhado meio
         this.scene.pushMatrix();
         this.scene.translate(-1.5, 8, 0);
-        this.scene.rotate(Math.PI/4, 1, 0, 0);
-        this.scene.scale(5, 7, 7);
-        this.telhado.display();
-        this.scene.popMatrix();
-
-        //telhado direita
-        this.scene.pushMatrix();
-        this.scene.translate(-1.5, 5, 6.9);
-        this.scene.rotate(Math.PI/4, 1, 0, 0);
-        this.scene.scale(5, 3, 3);
+        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.scene.scale(3.6, 3.6, 9.99);
         this.telhado.display();
         this.scene.popMatrix();
 
         //telhado esquerda
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 5, -6.9);
-        this.scene.rotate(Math.PI/4, 1, 0, 0);
-        this.scene.scale(5, 3, 3);
+        this.scene.translate(-1.5, 5, 6.99);
+        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.scene.scale(3.6, 3.6, 4);
+        this.telhado.display();
+        this.scene.popMatrix();
+
+        //telhado direita
+        this.scene.pushMatrix();
+        this.scene.translate(-1.5, 5, -6.99);
+        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.scene.scale(3.6, 3.6, 4);
         this.telhado.display();
         this.scene.popMatrix();
 
         //janela centro
         this.scene.pushMatrix();
-        this.scene.translate(1.1, 7, 0);
+        this.scene.translate(1.1, 6.5, 0);
         this.scene.scale(0, 1.7, 1.5)
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.janela.display();

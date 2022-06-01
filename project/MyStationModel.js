@@ -80,7 +80,7 @@ export class MyStationModel extends CGFobject {
 
         //base cimento
         this.scene.pushMatrix();
-        this.scene.scale(11, 1, 20);
+        this.scene.scale(11, 1, 23);
         this.cube.display();
         this.scene.popMatrix();
 

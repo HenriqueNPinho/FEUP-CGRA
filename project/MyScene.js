@@ -237,9 +237,24 @@ export class MyScene extends CGFscene {
         else{
            // this.translate(0,-37,0)
             this.myTrack.display()
+            //estacoes
+            this.pushMatrix();
+            this.translate(2, 0, 35);
+            this.rotate(Math.PI/1.75, 0, 1, 0);
             this.myStationModel.display();
-           // this.myTrainModel.display();
-            //this.myCrane.display();
+            this.popMatrix();
+
+            this.pushMatrix();
+            this.translate(31, 0, 0);
+            this.rotate(Math.PI+0.1, 0, 1, 0);
+            this.myStationModel.display();
+            this.popMatrix();
+
+            this.pushMatrix();
+            this.translate(0, 0, -33);
+            this.rotate(-Math.PI/2, 0, 1, 0);
+            this.myStationModel.display();
+            this.popMatrix();
         }
         this.myMovingTrain.display();
     }

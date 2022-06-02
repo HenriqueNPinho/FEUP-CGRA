@@ -16,7 +16,7 @@ export class MyMovingTrain extends CGFobject {
         this.train = new MyTrainModel(this.scene);
         this.speed = 0.01;
         this.currSeg = 0;
-        this.currState='stoped'  
+        this.currState='decelaration'  
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
@@ -45,8 +45,10 @@ export class MyMovingTrain extends CGFobject {
 
            case 'accelaration': 
                 //acelerar até ao proximo seg
+                this.speedChange = (this.speed/seg.dist)*(this.distAtual)
+               console.log(this.speedChange)
 
-               this.speedChange += (this.speed/seg.dist) 
+
                if(this.speedChange>this.speed){
                    this.speedChange=1
                }
@@ -77,13 +79,14 @@ export class MyMovingTrain extends CGFobject {
             case   'decelaration': 
                 
                    this.speedChange = this.speed-((this.speed/seg.dist)*this.distAtual)
-                    if (this.speedChange<0.01)
+                    if (this.speedChange<0.001)
                        this.speedChange=0
                    
                    this.nextPos(dir, deltatime)
 
                     if(this.speedChange==0){
                         this.changeSeg()
+                        this.distAtual=0.01
                         this.currState='stoped'
                     }
                       console.log(this.speedChange);

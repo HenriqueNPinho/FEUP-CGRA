@@ -10,6 +10,7 @@ import { MyCubeMap } from "./MyCubeMap.js";
 import { MyTrainModel } from "./MyTrainModel.js";
 import { MyMovingTrain } from "./MyMovingTrain.js";
 import { MyCrane } from "./MyCrane.js";
+import { MyStationModel } from "./MyStationModel.js";
 
 /**
 * MyScene
@@ -68,7 +69,7 @@ export class MyScene extends CGFscene {
         ] 
         this.displayAll=false;
 
-      
+        this.myStationModel = new MyStationModel(this);
  
         //Track
         this.myTrack =  new MyTrack(this, this.track);
@@ -236,10 +237,26 @@ export class MyScene extends CGFscene {
         else{
            // this.translate(0,-37,0)
             this.myTrack.display()
-           // this.myTrainModel.display();
-            //this.myCrane.display();
+            //estacoes
+            this.pushMatrix();
+            this.translate(2, 0, 35);
+            this.rotate(Math.PI/1.75, 0, 1, 0);
+            this.myStationModel.display();
+            this.popMatrix();
+
+            this.pushMatrix();
+            this.translate(31, 0, 0);
+            this.rotate(Math.PI+0.1, 0, 1, 0);
+            this.myStationModel.display();
+            this.popMatrix();
+
+            this.pushMatrix();
+            this.translate(0, 0, -33);
+            this.rotate(-Math.PI/2, 0, 1, 0);
+            this.myStationModel.display();
+            this.popMatrix();
         }
-        this.myMovingTrain.display()
+        this.myMovingTrain.display();
     }
 
     updateCubeMapTexture() {
@@ -250,5 +267,3 @@ export class MyScene extends CGFscene {
 //Checklist
 //cena da luz do cubo
 //rodas a andar
-//tirar tampa da caixa - usar cubos
-//lenha

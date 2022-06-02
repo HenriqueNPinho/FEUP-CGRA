@@ -174,10 +174,33 @@ export class MyTrainModel extends CGFobject {
 
         //caixa
         this.scene.pushMatrix();
-        this.scene.translate(0, 2, -2.7);
-        this.scene.scale(2.25, 1, 1.25);
+        this.scene.translate(2.25/2, 2, -2.7);
+        this.scene.scale(0, 1, 1.25);
+        this.caixa.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(-2.25/2, 2, -2.7);
+        this.scene.scale(0, 1, 1.25);
+        this.caixa.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 2, -2.7+1.25/2);
+        this.scene.scale(2.25, 1, 0);
+        this.caixa.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 2, -2.7-1.25/2);
+        this.scene.scale(2.25, 1, 0);
+        this.caixa.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 1.6, -2.7);
+        this.scene.scale(2.25, 0, 1.25);
         this.caixa.display();
         this.scene.popMatrix();
     }
 }
-

@@ -251,19 +251,19 @@ export class MyScene extends CGFscene {
             this.myTrack.display()
             //estacoes
             this.pushMatrix();
-            this.translate(2, 0, 35);
+            this.translate(2, 0, 33.5);
             this.rotate(Math.PI/1.75, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();
 
             this.pushMatrix();
-            this.translate(31, 0, 0);
+            this.translate(30.5, 0, 0);
             this.rotate(Math.PI+0.1, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();
 
             this.pushMatrix();
-            this.translate(0, 0, -33);
+            this.translate(0, 0, -32.5);
             this.rotate(-Math.PI/2, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();

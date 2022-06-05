@@ -74,6 +74,17 @@ export class MyStationModel extends CGFobject {
         this.colunaAppearance.setTexture(this.colunaText);
         this.colunaAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
+        //madeira
+        this.lenhaText = new CGFtexture(this.scene, 'images/trainModel/lenhaText.jpg');
+        this.lenha = new MyCylinder(this.scene, 10, 1.5, 0.2);
+        this.lenhaAppearance = new CGFappearance(this.scene);
+        this.lenhaAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+        this.lenhaAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.lenhaAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+        this.lenhaAppearance.setShininess(120);
+        this.lenhaAppearance.setTexture(this.lenhaText);
+        this.lenhaAppearance.setTextureWrap('LINEAR', 'LINEAR');
+
     }
 
     display(){
@@ -186,5 +197,31 @@ export class MyStationModel extends CGFobject {
         this.coluna.display();
         this.scene.popMatrix();
 
+        //madeira
+        this.scene.pushMatrix();
+        this.scene.translate(4.6, 1.5, -0.6);
+
+        this.scene.pushMatrix();
+        this.scene.translate(-0.2, 0, 0);
+        this.scene.rotate(Math.PI/2, 1, 0, 0);
+        this.lenhaAppearance.apply();
+        this.lenha.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0.2, 0, 0);
+        this.scene.rotate(Math.PI/2, 1, 0, 0);
+        this.lenhaAppearance.apply();
+        this.lenha.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.3, 0);
+        this.scene.rotate(Math.PI/2, 1, 0, 0);
+        this.lenhaAppearance.apply();
+        this.lenha.display();
+        this.scene.popMatrix();
+
+        this.scene.popMatrix();
     }
 }

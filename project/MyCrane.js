@@ -7,7 +7,9 @@ export class MyCrane extends CGFobject {
 		super(scene);
         this.angRot = 0;
         this.angInc = 0;
-        this.pick = false;
+
+        this.picking = 0;
+        this.madeiraBox = 0;
 		this.initBuffers();
 	}
 
@@ -48,7 +50,7 @@ export class MyCrane extends CGFobject {
 
         //cilindro cabo
         this.caboText = new CGFtexture(this.scene, 'images/trainModel/cordaText.jpg');
-        this.cabo = new MyCylinder(this.scene, 10, 3, 0.1);
+        this.cabo = new MyCylinder(this.scene, 10, 3.3, 0.1);
         this.caboAppearance = new CGFappearance(this.scene);
         this.caboAppearance.setAmbient(0.3, 0.3, 0.3, 1);
         this.caboAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -67,13 +69,17 @@ export class MyCrane extends CGFobject {
         this.lenhaAppearance.setShininess(120);
         this.lenhaAppearance.setTexture(this.lenhaText);
         this.lenhaAppearance.setTextureWrap('LINEAR', 'LINEAR');
+        
     }
 
     display(){
-        this.scene.pushMatrix()
+
+        this.scene.pushMatrix();
 
         //thid.translate()
-        this.scene.rotate(this.angRot*Math.PI/180,0,1,0) //rotacao
+        this.scene.rotate(this.angRot*Math.PI/180,0,1,0) //rotacao 
+
+
         //cilindro vertical
         this.scene.pushMatrix();
         this.scene.translate(0, 3, 0);
@@ -104,51 +110,72 @@ export class MyCrane extends CGFobject {
 
         //cabo
         this.scene.pushMatrix();
-      
-        this.scene.translate(Math.sin(-this.angInc* Math.PI/180),Math.tan(-this.angInc* Math.PI/180*2),0)
-        
+        this.scene.translate(Math.sin(-this.angInc* Math.PI/180),Math.tan(-this.angInc* Math.PI/180*2),0);
         this.scene.scale(1,-1,1)
         this.scene.translate(-2.9, 0, 0)
         this.caboAppearance.apply();
         this.cabo.display();
         this.scene.popMatrix();
-
         this.scene.popMatrix();
 
-        //if(pick == false){
-           this.scene.popMatrix();
-           console.log("aqui");
-        //}
-
-        //lenha
-        this.scene.pushMatrix();
-        this.scene.translate(0.7, 2, -2.5);
-        this.scene.rotate(-Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.lenhaAppearance.apply();
-        this.lenha.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-        this.scene.translate(0.7, 2, -2.9);
-        this.scene.rotate(-Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.lenhaAppearance.apply();
-        this.lenha.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-        this.scene.translate(0.7, 2.3, -2.7);
-        this.scene.rotate(-Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.lenhaAppearance.apply();
-        this.lenha.display();
-        this.scene.popMatrix();
-
-        /*if(pick == true){
+        //mexer lenha, sempre que o picking está a 1
+        if(this.picking == 1){
+            this.scene.pushMatrix();
+            this.scene.translate(Math.sin(-this.angInc* Math.PI/180),Math.tan(-this.angInc* Math.PI/180*2),0)
+            
+            this.scene.pushMatrix();
+            this.scene.translate(-2.7, 1.5, -0.7);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
             this.scene.popMatrix();
-        }*/
 
+            this.scene.pushMatrix();
+            this.scene.translate(-2.9, 0.4+1.5, -0.7);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
+            this.scene.popMatrix();
+
+            this.scene.pushMatrix();
+            this.scene.translate(-3.1, 1.5, -0.7);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
+            this.scene.popMatrix();
+            this.scene.popMatrix();
+
+            this.scene.popMatrix();
+        }
+
+        //lenha dento da caixa, nao aparece no primeiro picking = 0, porque ainda nao apanhou lenha
+        else if(this.madeiraBox == 1){
+            this.scene.popMatrix();
+
+            this.scene.pushMatrix();
+            this.scene.translate(0.7, 2, -2.5);
+            this.scene.rotate(-Math.PI/2, 0, 1, 0);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
+            this.scene.popMatrix();
+
+            this.scene.pushMatrix();
+            this.scene.translate(0.7, 2, -2.9);
+            this.scene.rotate(-Math.PI/2, 0, 1, 0);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
+            this.scene.popMatrix();
+
+            this.scene.pushMatrix();
+            this.scene.translate(0.7, 2.3, -2.7);
+            this.scene.rotate(-Math.PI/2, 0, 1, 0);
+            this.scene.rotate(Math.PI/2, 1, 0, 0);
+            this.lenhaAppearance.apply();
+            this.lenha.display();
+            this.scene.popMatrix();
+        }
     }
     turn(val){ 
         this.angRot+=val*10;
@@ -156,7 +183,6 @@ export class MyCrane extends CGFobject {
     tilt(val){ 
         if(this.angInc>=-20 && this.angInc<=0){
             this.angInc+=val*5
-            console.log("1")
         }
         else if(this.angInc<-20 && val>0){
             this.angInc+=val*5 //-40 limite em cima
@@ -166,16 +192,18 @@ export class MyCrane extends CGFobject {
             this.angInc+=val*5 //_5 limite em baixo
         
         }
-        console.log(this.angInc);
         
     }
     reset(){ //voltar ao inicial 
 
     }
-    p(){
-        
-        // nova madeira na pos cabo
-        if(pick == false) pick = true;
-        else if(pick == true) pick = false;
+    pCrane(){
+        if(this.picking == 0){
+            this.picking = 1; //com a lenha a mexer
+        }
+        else if(this.picking == 1){
+            this.picking = 0; //sem lenha a mexer
+            this.madeiraBox = 1; //lenha na caixa
+        } 
     }
 }

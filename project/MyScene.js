@@ -24,7 +24,6 @@ export class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
-
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -171,18 +170,8 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyP")){ //agarrar e largar
             text += " P ";
             keysPressed = true;
-            curr=true;
-            if(this.myMovingTrain.currState=='stoped'){
-                if(curr){
-                 this.myMovingTrain.train.myCrane.p();
-                 curr=false;
-                }
-                else{
-                    //pousar a madeira e arrancar
-                    curr=true;
-                    this.myMovingTrain.currState='accelaration'
-                }
-            }
+
+            this.myMovingTrain.train.myCrane.pCrane();
         }
         if(this.gui.isKeyPressed("KeyR")){ //reset
             text += " R ";
@@ -251,13 +240,13 @@ export class MyScene extends CGFscene {
             this.myTrack.display()
             //estacoes
             this.pushMatrix();
-            this.translate(2, 0, 33.5);
-            this.rotate(Math.PI/1.75, 0, 1, 0);
+            this.translate(7.5, 0, 32);
+            this.rotate(Math.PI/1.73, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();
 
             this.pushMatrix();
-            this.translate(30.5, 0, 0);
+            this.translate(30, 0, -3.2);
             this.rotate(Math.PI+0.1, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();

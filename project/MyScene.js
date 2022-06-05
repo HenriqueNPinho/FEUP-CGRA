@@ -237,7 +237,7 @@ export class MyScene extends CGFscene {
         //Cube map
         if(this.displayCubeMap){
         this.pushMatrix();
-        this.scale(1.5,1.5,1.5)
+        this.scale(2,2,2)
         this.myCubeMap.display()
         this.popMatrix();
         }

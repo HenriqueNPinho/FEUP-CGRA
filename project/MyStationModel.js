@@ -185,5 +185,6 @@ export class MyStationModel extends CGFobject {
         this.colunaAppearance.apply();
         this.coluna.display();
         this.scene.popMatrix();
+        
     }
 }

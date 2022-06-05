@@ -116,7 +116,7 @@ export class MyStationModel extends CGFobject {
 
         //telhado esquerda
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 6, 6.99);
+        this.scene.translate(-1.5, 6, 6.95);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
         this.scene.scale(3.6, 3.6, 4);
         this.telhado.display();
@@ -124,7 +124,7 @@ export class MyStationModel extends CGFobject {
 
         //telhado direita
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 6, -6.99);
+        this.scene.translate(-1.5, 6, -6.95);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
         this.scene.scale(3.6, 3.6, 4);
         this.telhado.display();

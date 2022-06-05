@@ -110,7 +110,7 @@ export class MyStationModel extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(-1.5, 9, 0);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
-        this.scene.scale(3.6, 3.6, 9.99);
+        this.scene.scale(3.6, 3.6, 9.95);
         this.telhado.display();
         this.scene.popMatrix();
 
@@ -185,6 +185,6 @@ export class MyStationModel extends CGFobject {
         this.colunaAppearance.apply();
         this.coluna.display();
         this.scene.popMatrix();
-        
+
     }
 }

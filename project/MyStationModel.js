@@ -80,34 +80,35 @@ export class MyStationModel extends CGFobject {
 
         //base cimento
         this.scene.pushMatrix();
-        this.scene.scale(11, 1, 23);
+        this.scene.translate(0, 0.5, 0);
+        this.scene.scale(11, 1.5, 23);
         this.cube.display();
         this.scene.popMatrix();
 
         //bloco do meio
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 4, 0);
+        this.scene.translate(-1.5, 5, 0);
         this.scene.scale(5, 8, 10);
         this.parede.display();
         this.scene.popMatrix();
 
         //bloco direita
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 2.5, 7);
+        this.scene.translate(-1.5, 3.5, 7);
         this.scene.scale(5, 5, 4)
         this.parede.display();
         this.scene.popMatrix();
 
         //bloco esquerda
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 2.5, -7);
+        this.scene.translate(-1.5, 3.5, -7);
         this.scene.scale(5, 5, 4)
         this.parede.display();
         this.scene.popMatrix();
 
         //telhado meio
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 8, 0);
+        this.scene.translate(-1.5, 9, 0);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
         this.scene.scale(3.6, 3.6, 9.99);
         this.telhado.display();
@@ -115,7 +116,7 @@ export class MyStationModel extends CGFobject {
 
         //telhado esquerda
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 5, 6.99);
+        this.scene.translate(-1.5, 6, 6.99);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
         this.scene.scale(3.6, 3.6, 4);
         this.telhado.display();
@@ -123,7 +124,7 @@ export class MyStationModel extends CGFobject {
 
         //telhado direita
         this.scene.pushMatrix();
-        this.scene.translate(-1.5, 5, -6.99);
+        this.scene.translate(-1.5, 6, -6.99);
         this.scene.rotate(Math.PI/4, 0, 0, 1);
         this.scene.scale(3.6, 3.6, 4);
         this.telhado.display();
@@ -131,7 +132,7 @@ export class MyStationModel extends CGFobject {
 
         //janela centro
         this.scene.pushMatrix();
-        this.scene.translate(1.1, 6.5, 0);
+        this.scene.translate(1.1, 7.5, 0);
         this.scene.scale(0, 1.7, 1.5)
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.janela.display();
@@ -139,7 +140,7 @@ export class MyStationModel extends CGFobject {
 
         //janela direita
         this.scene.pushMatrix();
-        this.scene.translate(1.1, 3, -7);
+        this.scene.translate(1.1, 4, -7);
         this.scene.scale(0, 1.7, 1.5)
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.janela.display();
@@ -147,7 +148,7 @@ export class MyStationModel extends CGFobject {
 
         //janela esquerda
         this.scene.pushMatrix();
-        this.scene.translate(1.1, 3, 7);
+        this.scene.translate(1.1, 4, 7);
         this.scene.scale(0, 1.7, 1.5)
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.janela.display();
@@ -155,15 +156,15 @@ export class MyStationModel extends CGFobject {
 
         //porta
         this.scene.pushMatrix();
-        this.scene.translate(1.1, 2, 0);
-        this.scene.scale(0, 3, 1.5)
+        this.scene.translate(1.1, 2.5, 0);
+        this.scene.scale(0, 3.5, 1.5)
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.porta.display();
         this.scene.popMatrix();
 
         //lona
         this.scene.pushMatrix();
-        this.scene.translate(2, 5, 0);
+        this.scene.translate(2, 6, 0);
         this.scene.rotate(-Math.PI/17, 0, 0, 1);
         this.scene.scale(5, 0, 7);
         this.telhado.display();
@@ -171,7 +172,7 @@ export class MyStationModel extends CGFobject {
 
         //coluna esquerda
         this.scene.pushMatrix();
-        this.scene.translate(3.5, 4.6, 2);
+        this.scene.translate(3.5, 5.6, 2);
         this.scene.rotate(Math.PI, 0, 0, 1);
         this.colunaAppearance.apply();
         this.coluna.display();
@@ -179,7 +180,7 @@ export class MyStationModel extends CGFobject {
 
         //coluna direita
         this.scene.pushMatrix();
-        this.scene.translate(3.5, 4.6, -2);
+        this.scene.translate(3.5, 5.6, -2);
         this.scene.rotate(Math.PI, 0, 0, 1);
         this.colunaAppearance.apply();
         this.coluna.display();

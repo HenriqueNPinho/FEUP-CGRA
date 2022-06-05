@@ -171,6 +171,18 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyP")){ //agarrar e largar
             text += " P ";
             keysPressed = true;
+            curr=true;
+            if(this.myMovingTrain.currState=='stoped'){
+                if(curr){
+                 this.myMovingTrain.train.myCrane.p();
+                 curr=false;
+                }
+                else{
+                    //pousar a madeira e arrancar
+                    curr=true;
+                    this.myMovingTrain.currState='accelaration'
+                }
+            }
         }
         if(this.gui.isKeyPressed("KeyR")){ //reset
             text += " R ";

@@ -7,13 +7,14 @@ export class MyCrane extends CGFobject {
 		super(scene);
         this.angRot = 0;
         this.angInc = 0;
+        this.pick = false;
 		this.initBuffers();
 	}
 
     initBuffers() {
 
         //cilindro vertical
-        this.cylinderText = new CGFtexture(this.scene, 'images/cubeText.jpg');
+        this.cylinderText = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
         this.cylinder = new MyCylinder(this.scene, 10, 2, 0.3);
         this.cylinderAppearance = new CGFappearance(this.scene);
         this.cylinderAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -24,7 +25,7 @@ export class MyCrane extends CGFobject {
         this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //esfera
-        this.sphereText = new CGFtexture(this.scene, 'images/cubeText.jpg');
+        this.sphereText = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
         this.sphere = new MySphere(this.scene, 10, 10);
         this.sphereAppearance = new CGFappearance(this.scene);
         this.sphereAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -35,7 +36,7 @@ export class MyCrane extends CGFobject {
         this.sphereAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //cilindro movel
-        this.cylinderMovelText = new CGFtexture(this.scene, 'images/cubeText.jpg');
+        this.cylinderMovelText = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
         this.cylinderMovel = new MyCylinder(this.scene, 10, 3, 0.2);
         this.cylinderMovelAppearance = new CGFappearance(this.scene);
         this.cylinderMovelAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -46,7 +47,7 @@ export class MyCrane extends CGFobject {
         this.cylinderMovelAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //cilindro cabo
-        this.caboText = new CGFtexture(this.scene, 'images/cordaText.jpg');
+        this.caboText = new CGFtexture(this.scene, 'images/trainModel/cordaText.jpg');
         this.cabo = new MyCylinder(this.scene, 10, 3, 0.1);
         this.caboAppearance = new CGFappearance(this.scene);
         this.caboAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -57,7 +58,7 @@ export class MyCrane extends CGFobject {
         this.caboAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //lenha
-        this.lenhaText = new CGFtexture(this.scene, 'images/lenhaText.jpg');
+        this.lenhaText = new CGFtexture(this.scene, 'images/trainModel/lenhaText.jpg');
         this.lenha = new MyCylinder(this.scene, 10, 1.5, 0.2);
         this.lenhaAppearance = new CGFappearance(this.scene);
         this.lenhaAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -109,8 +110,11 @@ export class MyCrane extends CGFobject {
         this.cabo.display();
         this.scene.popMatrix();
         this.scene.popMatrix();
-        this.scene.popMatrix();
-        
+
+        //if(pick == false){
+           this.scene.popMatrix();
+           console.log("aqui");
+        //}
 
         //lenha
         this.scene.pushMatrix();
@@ -137,6 +141,10 @@ export class MyCrane extends CGFobject {
         this.lenha.display();
         this.scene.popMatrix();
 
+        /*if(pick == true){
+            this.scene.popMatrix();
+        }*/
+
     }
     turn(val){ 
         this.angRot+=val*10;
@@ -158,5 +166,11 @@ export class MyCrane extends CGFobject {
     }
     reset(){ //voltar ao inicial 
 
+    }
+    p(){
+        
+        // nova madeira na pos cabo
+        if(pick == false) pick = true;
+        else if(pick == true) pick = false;
     }
 }

@@ -13,17 +13,17 @@ export class MyTrainModel extends CGFobject {
     initBuffers() {
 
         //cubo
-        this.top = new CGFtexture(this.scene,'images/cubeText.jpg');
-        this.front = new CGFtexture(this.scene, 'images/cubeText.jpg');
-        this.back = new CGFtexture(this.scene, 'images/cubeText.jpg');
-        this.left = new CGFtexture(this.scene, 'images/cubeText.jpg');
-        this.right = new CGFtexture(this.scene,'images/cubeText.jpg');
-        this.bottom = new CGFtexture(this.scene, 'images/cubeText.jpg');
+        this.top = new CGFtexture(this.scene,'images/trainModel/cubeText.jpg');
+        this.front = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
+        this.back = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
+        this.left = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
+        this.right = new CGFtexture(this.scene,'images/trainModel/cubeText.jpg');
+        this.bottom = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
         this.cubeTexture = [this.top, this.front, this.right, this.back, this.left, this.bottom];
         this.cube = new MyUnitCubeQuad(this.scene, this.cubeTexture);
 
         //circulo roda
-        this.circleText = new CGFtexture(this.scene, 'images/circle.jpg');
+        this.circleText = new CGFtexture(this.scene, 'images/trainModel/circle.jpg');
         this.circle = new MyCircle(this.scene, 20, 1.5/2)
         this.circleAppearance = new CGFappearance(this.scene);
         this.circleAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -33,7 +33,7 @@ export class MyTrainModel extends CGFobject {
         this.circleAppearance.setTexture(this.circleText);
 
         //tampa
-        this.tampaText = new CGFtexture(this.scene, 'images/cubeText.jpg');
+        this.tampaText = new CGFtexture(this.scene, 'images/trainModel/cubeText.jpg');
         this.tampa = new MyCircle(this.scene, 20, 0.9)
         this.tampaAppearance = new CGFappearance(this.scene);
         this.tampaAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -43,7 +43,7 @@ export class MyTrainModel extends CGFobject {
         this.tampaAppearance.setTexture(this.tampaText);
 
         //cilindro rodas
-        this.cylinderText = new CGFtexture(this.scene, 'images/cilindroText.jpg');
+        this.cylinderText = new CGFtexture(this.scene, 'images/trainModel/cilindroText.jpg');
         this.cylinder = new MyCylinder(this.scene, 10, 2.5, 1.5/2);
         this.cylinderAppearance = new CGFappearance(this.scene);
         this.cylinderAppearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -54,7 +54,7 @@ export class MyTrainModel extends CGFobject {
         this.cylinderAppearance.setTextureWrap('LINEAR', 'LINEAR');
 
         //cilindro cima
-        this.cylinderTextCima = new CGFtexture(this.scene, 'images/cilindroText.jpg');
+        this.cylinderTextCima = new CGFtexture(this.scene, 'images/trainModel/cilindroText.jpg');
         this.cylinderCima = new MyCylinder(this.scene, 10, 3.5, 0.9);
         this.cylinderAppearanceCima = new CGFappearance(this.scene);
         this.cylinderAppearanceCima.setAmbient(0.3, 0.3, 0.3, 1);
@@ -68,12 +68,12 @@ export class MyTrainModel extends CGFobject {
         this.myCrane = new MyCrane(this.scene);
 
         //caixa
-        this.topC = new CGFtexture(this.scene,'images/metalText.jpg');
-        this.frontC = new CGFtexture(this.scene, 'images/metalText.jpg');
-        this.backC = new CGFtexture(this.scene, 'images/metalText.jpg');
-        this.leftC = new CGFtexture(this.scene, 'images/metalText.jpg');
-        this.rightC = new CGFtexture(this.scene,'images/metalText.jpg');
-        this.bottomC = new CGFtexture(this.scene, 'images/metalText.jpg');
+        this.topC = new CGFtexture(this.scene,'images/trainModel/metalText.jpg');
+        this.frontC = new CGFtexture(this.scene, 'images/trainModel/metalText.jpg');
+        this.backC = new CGFtexture(this.scene, 'images/trainModel/metalText.jpg');
+        this.leftC = new CGFtexture(this.scene, 'images/trainModel/metalText.jpg');
+        this.rightC = new CGFtexture(this.scene,'images/trainModel/metalText.jpg');
+        this.bottomC = new CGFtexture(this.scene, 'images/trainModel/metalText.jpg');
         this.caixaTexture = [this.topC, this.frontC, this.rightC, this.backC, this.leftC, this.bottomC];
         this.caixa = new MyUnitCubeQuad(this.scene, this.caixaTexture);
 

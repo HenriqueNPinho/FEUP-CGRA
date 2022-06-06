@@ -43,7 +43,7 @@ export class MyMovingTrain extends CGFobject {
            case 'accelaration': 
                 //acelerar até ao proximo seg
                 this.speedChange += this.speed/seg.dist
-                this.train.update(3);
+                this.train.update(1.5);
                console.log(this.speedChange)
 
 
@@ -65,7 +65,7 @@ export class MyMovingTrain extends CGFobject {
 
             case  'cruise':
                 this.nextPos(dir, deltatime)
-                this.train.update(0);
+                this.train.update(0.1);
                 if(this.distAtual > seg.dist){
                     this.changeSeg()
                     if(this.track.segs[this.currSeg].type=='station'){
@@ -92,6 +92,7 @@ export class MyMovingTrain extends CGFobject {
                     break;
 
             case    'stoped': 
+            this.train.update(0);
                 //madeira
                 break;
             

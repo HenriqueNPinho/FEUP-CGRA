@@ -8,7 +8,7 @@ export class MyTrainModel extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
-        this.rotateSpeed=100;
+        this.rotateSpeed=250;
 	}
 
     initBuffers() {
@@ -80,7 +80,14 @@ export class MyTrainModel extends CGFobject {
 
     }
     update(x){
-            this.rotateSpeed+=1;
+            if((this.rotateSpeed+=x )<0 )
+                this.rotateSpeed=0;
+            else if((this.rotateSpeed+=x)>359)
+                this.rotateSpeed=359;
+
+            else 
+                this.rotateSpeed+=x;
+            console.log("rot speed:", this.rotateSpeed)
     }
 
     display(){

@@ -45,7 +45,7 @@ export class MyMovingTrain extends CGFobject {
 
            case 'accelaration': 
                 //acelerar até ao proximo seg
-                this.speedChange = (this.speed/seg.dist)*(this.distAtual)
+                this.speedChange += this.speed/seg.dist
                console.log(this.speedChange)
 
 

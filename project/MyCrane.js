@@ -176,6 +176,7 @@ export class MyCrane extends CGFobject {
             this.lenha.display();
             this.scene.popMatrix();
         }
+        console.log("inc : " + this.angInc + "rot:  " + this.angRot);
     }
     turn(val){ 
         this.angRot+=val*10;
@@ -198,10 +199,10 @@ export class MyCrane extends CGFobject {
 
     }
     pCrane(){
-        if(this.picking == 0){
+        if(this.picking == 0 && this.angInc == 0 && (this.angRot > -10 && this.angRot < 10)){
             this.picking = 1; //com a lenha a mexer
         }
-        else if(this.picking == 1){
+        else if(this.picking == 1 && (this.angRot < -85 && this.angRot > -95) && this.angInc > -10){
             this.picking = 0; //sem lenha a mexer
             this.madeiraBox = 1; //lenha na caixa
         } 

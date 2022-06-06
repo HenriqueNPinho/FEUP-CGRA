@@ -2,6 +2,11 @@
 
 ## Group T07G03
 
+| Name             | Number    | E-Mail               |
+| ---------------- | --------- | -------------------- |
+| Henrique Pinho   | 201805000 | up201805000@fc.up.pt |
+| Bruna Ribeiro    | 201804925 | up201804925@fc.up.pt |
+
 ## Project Notes
 
 - In exercise 4 we had some dificulties to put the train moving at different speeds

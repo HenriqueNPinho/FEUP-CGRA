@@ -199,6 +199,8 @@ export class MyCrane extends CGFobject {
 
     }
     pCrane(){
+        if(this.angRot >= 360) this.angRot = this.angRot - 360;
+        if(this.angRot <= -360) this.angRot = this.angRot + 360;
         if(this.picking == 0 && this.angInc >= -5 && (this.angRot >= -10 && this.angRot <= 10)){
             this.picking = 1; //com a lenha a mexer
             

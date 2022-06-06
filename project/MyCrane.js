@@ -199,7 +199,7 @@ export class MyCrane extends CGFobject {
 
     }
     pCrane(){
-        if(this.picking == 0 && this.angInc >= 5 && (this.angRot >= -10 && this.angRot <= 10)){
+        if(this.picking == 0 && this.angInc >= -5 && (this.angRot >= -10 && this.angRot <= 10)){
             this.picking = 1; //com a lenha a mexer
         }
         else if(this.picking == 1 && (this.angRot <= -85 && this.angRot >= -95) && this.angInc >= -10){

@@ -131,7 +131,7 @@ export class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera2(0.4, 0.1, 500, vec3.fromValues(-90,60,120), vec3.fromValues(10, -49,-20));
+        this.camera = new CGFcamera2(0.4, 0.1, 500, vec3.fromValues(-140,0,0), vec3.fromValues(22.5, -49,-2.5));
         console.log(this.camera)
     }
 
@@ -257,8 +257,9 @@ export class MyScene extends CGFscene {
             this.rotate(-Math.PI/2, 0, 1, 0);
             this.myStationModel.display();
             this.popMatrix();
+            this.myMovingTrain.display();
         }
-        this.myMovingTrain.display();
+       
     }
 
     updateCubeMapTexture() {

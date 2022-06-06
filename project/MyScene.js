@@ -236,7 +236,7 @@ export class MyScene extends CGFscene {
             this.myEarth.display()
         }
         else{
-           // this.translate(0,-37,0)
+            this.translate(0,-49.9,0)
             this.myTrack.display()
             //estacoes
             this.pushMatrix();

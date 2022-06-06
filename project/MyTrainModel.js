@@ -8,6 +8,7 @@ export class MyTrainModel extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
+        this.rotateSpeed=100;
 	}
 
     initBuffers() {
@@ -78,6 +79,9 @@ export class MyTrainModel extends CGFobject {
         this.caixa = new MyUnitCubeQuad(this.scene, this.caixaTexture);
 
     }
+    update(x){
+            this.rotateSpeed+=1;
+    }
 
     display(){
 
@@ -123,6 +127,7 @@ export class MyTrainModel extends CGFobject {
         //roda direita tras
         this.scene.pushMatrix();
         this.scene.translate(1.26, 0.6, -1.95);
+        this.scene.rotate(-this.rotateSpeed, 1, 0, 0);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -131,6 +136,7 @@ export class MyTrainModel extends CGFobject {
         //roda direita frente
         this.scene.pushMatrix();
         this.scene.translate(1.26, 0.6, 1.95);
+        this.scene.rotate(-this.rotateSpeed, 1, 0, 0);
         this.scene.rotate(-Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -139,6 +145,7 @@ export class MyTrainModel extends CGFobject {
         //roda esquerda tras
         this.scene.pushMatrix();
         this.scene.translate(-1.26, 0.6, -1.95);
+        this.scene.rotate(-this.rotateSpeed, 1, 0, 0);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();
@@ -147,6 +154,7 @@ export class MyTrainModel extends CGFobject {
         //roda esquerda frente
         this.scene.pushMatrix();
         this.scene.translate(-1.26, 0.6, 1.95);
+        this.scene.rotate(-this.rotateSpeed, 1, 0, 0);
         this.scene.rotate(Math.PI/2, 0, 0, 1);
         this.circleAppearance.apply();
         this.circle.display();

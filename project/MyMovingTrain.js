@@ -14,20 +14,17 @@ export class MyMovingTrain extends CGFobject {
     initBuffers() {
         
         this.train = new MyTrainModel(this.scene);
-        this.speed = 0.01;
+        this.speed = 0.5;
         this.currSeg = 0;
         this.currState='decelaration'  
         this.position =[this.track.segs[this.currSeg].x,this.track.segs[this.currSeg].z]
         this.orientation = 0;
         this.lastT = 0;
         this.distAtual = 0;
-        this.speedChange=1;
+        this.speedChange=0.5;
     }
 
     update(t){ //50 millis, max speed 0,01/sec -> 0,0005 /milli
-
-      
-        this.speed = 1; //0.01 é demais, apagar mais tarde
 
         if(this.lastT!=0){  
             this.stateMachine(t)
@@ -46,11 +43,12 @@ export class MyMovingTrain extends CGFobject {
            case 'accelaration': 
                 //acelerar até ao proximo seg
                 this.speedChange += this.speed/seg.dist
+                this.train.update(3);
                console.log(this.speedChange)
 
 
                if(this.speedChange>this.speed){
-                   this.speedChange=1
+                   this.speedChange=0.5
                }
                this.nextPos(dir,deltatime)
 
@@ -67,7 +65,7 @@ export class MyMovingTrain extends CGFobject {
 
             case  'cruise':
                 this.nextPos(dir, deltatime)
-
+                this.train.update(0);
                 if(this.distAtual > seg.dist){
                     this.changeSeg()
                     if(this.track.segs[this.currSeg].type=='station'){
@@ -79,6 +77,7 @@ export class MyMovingTrain extends CGFobject {
             case   'decelaration': 
                 
                    this.speedChange = this.speed-((this.speed/seg.dist)*this.distAtual)
+                   this.train.update(-3);
                     if (this.speedChange<0.001)
                        this.speedChange=0
                    
@@ -125,6 +124,8 @@ export class MyMovingTrain extends CGFobject {
 
 
     display() {
+
+
         this.scene.translate(this.position[0],0,this.position[1]);
         this.scene.rotate(-this.orientation,0,1,0)
         this.scene.rotate(Math.PI/2,0,1,0)

@@ -170,8 +170,8 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyP")){ //agarrar e largar
             text += " P ";
             keysPressed = true;
-
-            this.myMovingTrain.train.myCrane.pCrane();
+            if(this.myMovingTrain.train.myCrane.pCrane())
+                this.myMovingTrain.currState='accelaration'
         }
         if(this.gui.isKeyPressed("KeyR")){ //reset
             text += " R ";

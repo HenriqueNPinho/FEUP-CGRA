@@ -131,7 +131,8 @@ export class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera2(0.4, 0.1, 500, vec3.fromValues(30,30,30), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera2(0.4, 0.1, 500, vec3.fromValues(-90,60,120), vec3.fromValues(10, -49,-20));
+        console.log(this.camera)
     }
 
     setDefaultAppearance() {
